@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ *
+ *
+ *  Generated with Tigerstripe(tm) Tigerstripe Workbench Feature 2.2.0.v20070416-0736-GFEkmUll1E-mVWE
+ *
+ *  Tigerstripe(tm) is a registered trademark of Tigerstripe, Inc.
+ *
+ *  Plugin  : Tigerstripe, Inc., OSS through Java(TM) Initiative/XMLSpecificationPlugin(0.6) 
+ *
+ *  Template templates\packageBased\packageBasedSchema.vm
+ *    
+ *  DO NOT EDIT THIS CODE WAS AUTOMATICALLY GENERATED
+ *
+Copyright 2002-2007 The Members of the OSS through Java(TM) Initiative.
+All rights reserved. Use is subject to license terms.
+ *
+-->
+<!--
+DOCUMENTATION IS PROVIDED "AS IS" AND ALL EXPRESS OR IMPLIED
+CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED
+WARRANTY OF MERCHANTABILITY, FITNESS FOR FOR A PARTICULAR PURPOSE OR
+NON-INFRINGEMENT, ARE DISCLAIMED, EXCEPT TO THE EXTENT THAT SUCH
+DISCLAIMERS ARE HELD TO BE LEGALLY INVALID.
+-->
+<schema targetNamespace="http://ossj.org/xml/TroubleTicket-CBETrouble/v1-2" 
+	    xmlns="http://www.w3.org/2001/XMLSchema" 
+	    xmlns:co-v1-5="http://ossj.org/xml/Common/v1-5" 
+	    xmlns:cbetrouble-v1-2="http://ossj.org/xml/TroubleTicket-CBETrouble/v1-2" 
+	    xmlns:cbebi-v1-5="http://ossj.org/xml/Common-CBEBi/v1-5" 
+	    xmlns:cbecore-v1-5="http://ossj.org/xml/Common-CBECore/v1-5" 
+	    xmlns:cbeparty-v1-5="http://ossj.org/xml/Common-CBEParty/v1-5" 
+	    xmlns:cbelocation-v1-5="http://ossj.org/xml/Common-CBELocation/v1-5" 
+	    xmlns:ttValueFTTHMUT="http://interop-fibre.fr/xml/TroubleTicketValue/v3-0" version="v3-0" elementFormDefault="qualified">
+
+    <!-- Imports -->
+
+    <import namespace="http://ossj.org/xml/Common/v1-5" schemaLocation="OSSJ-Common-v1-5.xsd"/>
+    <import namespace="http://ossj.org/xml/Common-CBEBi/v1-5" schemaLocation="OSSJ-Common-CBEBi-v1-5.xsd"/>
+    <import namespace="http://ossj.org/xml/Common-CBECore/v1-5" schemaLocation="OSSJ-Common-CBECore-v1-5.xsd"/>
+    <import namespace="http://ossj.org/xml/Common-CBEParty/v1-5" schemaLocation="OSSJ-Common-CBEParty-v1-5.xsd"/>    
+    <import namespace="http://ossj.org/xml/Common-CBELocation/v1-5" schemaLocation="OSSJ-Common-CBELocation-v1-5.xsd"/>
+    <import namespace="http://interop-fibre.fr/xml/TroubleTicketValue/v3-0" schemaLocation="FTTHMUTTroubleTicketValue-v3-0.xsd"/>
+    
+    
+    <!-- Tigerstripe : Entity definitions for TroubleTicket  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="TroubleTicketValue">
+        <annotation>
+            <documentation>
+Value type interface for accessing Trouble Ticket values. 
+ TroubleTickets are stored inside the Trouble Ticket System. A client can retrieve and change Trouble Tickets indirectly by using the methods of this Session Bean.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbebi-v1-5:BusinessInteractionValue">    
+                <sequence>
+				<element name="troubleTicketKey" type="string" nillable="true" minOccurs="1" maxOccurs="1"/>
+				<element ref="cbetrouble-v1-2:baseTroubleTicketState_TroubleTicket" minOccurs="0"/>
+				<element name="businessInteractionState" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<element name="troubleTicketState" type="string" nillable="true" minOccurs="1" maxOccurs="1"/>			    
+				<element name="troubleDescription" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<element name="roleAssignments" type="cbetrouble-v1-2:ArrayOfTroubleTicketRoleAssignment" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<element name="troubleDetectionTime" type="dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<element name="serviceRestoredTime" type="dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<element name="troubleTicketItemKeys" type="cbetrouble-v1-2:ArrayOfTroubleTicketItemKey" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<element name="FTTHMUTTroubleTicket" type="ttValueFTTHMUT:FTTHMUTTroubleTicket" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    
+    <complexType name="ArrayOfTroubleTicketValue">
+        <sequence>
+            <element name="item" type="cbetrouble-v1-2:TroubleTicketValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="TroubleTicketResponse">
+        <annotation>
+            <documentation>
+			Response to the CreateTroubleTicketByValue.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="troubleTicketKey" type="string" nillable="true" minOccurs="1" maxOccurs="1"/>
+                    <element name="returnCode" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="returnLabel" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfTroubleTicketResponse">
+        <sequence>
+            <element name="item" type="cbetrouble-v1-2:TroubleTicketResponse" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="TroubleTicketKey">
+        <annotation>
+            <documentation>
+                This TroubleTicketKey encapsulates all the information that is necessary to 
+                identify a particular instance of a TroubleTicketValue. The type of the 
+                primary key for this TroubleTicketKey definition is: anyType 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbebi-v1-5:BusinessInteractionKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfTroubleTicketKey">
+        <sequence>
+            <element name="item" type="cbetrouble-v1-2:TroubleTicketKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="TroubleTicketKeyResult">
+        <annotation>
+            <documentation>
+                The TroubleTicketKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a TroubleTicketValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbebi-v1-5:BusinessInteractionKeyResult">
+                <sequence>
+                     <element name="troubleTicketKey" type="cbetrouble-v1-2:TroubleTicketKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfTroubleTicketKeyResult">
+        <sequence>
+            <element name="item" type="cbetrouble-v1-2:TroubleTicketKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of TroubleTicket -->
+    <element name="baseTroubleTicketState_TroubleTicket" type="string" abstract="true"/>
+     
+    <element name="troubleTicketState_TroubleTicket" type="cbetrouble-v1-2:TroubleTicketState" substitutionGroup="cbetrouble-v1-2:baseTroubleTicketState_TroubleTicket"/> 
+
+    <!-- Tigerstripe : End of Entity definition for TroubleTicket -->
+    <!-- Tigerstripe : Entity definitions for TroubleTicketItem  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="TroubleTicketItemValue">
+        <annotation>
+            <documentation>
+Interface definition for the javax.oss.cbe.trouble.TroubleTicketItemValue. Base interface for items involved in the process of solving a trouble
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbebi-v1-5:BusinessInteractionItemValue">    
+                <sequence>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfTroubleTicketItemValue">
+        <sequence>
+            <element name="item" type="cbetrouble-v1-2:TroubleTicketItemValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="TroubleTicketItemKey">
+        <annotation>
+            <documentation>
+                This TroubleTicketItemKey encapsulates all the information that is necessary to 
+                identify a particular instance of a TroubleTicketItemValue. The type of the 
+                primary key for this TroubleTicketItemKey definition is: anyType 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbebi-v1-5:BusinessInteractionItemKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfTroubleTicketItemKey">
+        <sequence>
+            <element name="item" type="cbetrouble-v1-2:TroubleTicketItemKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="TroubleTicketItemKeyResult">
+        <annotation>
+            <documentation>
+                The TroubleTicketItemKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a TroubleTicketItemValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbebi-v1-5:BusinessInteractionItemKeyResult">
+                <sequence>
+                     <element name="troubleTicketItemKey" type="cbetrouble-v1-2:TroubleTicketItemKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfTroubleTicketItemKeyResult">
+        <sequence>
+            <element name="item" type="cbetrouble-v1-2:TroubleTicketItemKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of TroubleTicketItem -->
+    <!-- Tigerstripe : End of Entity definition for TroubleTicketItem -->
+    <!-- Tigerstripe : Datatype definitions for TroubleTicketRoleAssignment  (basic, ArrayOf) -->
+    <complexType name="TroubleTicketRoleAssignment">
+        <annotation>
+            <documentation>
+An assignment of a party to a role that it has during the trouble resolution process.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="roleName" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="assignedParty" type="cbetrouble-v1-2:PersonReachValue" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="supportedPartyTypes" type="co-v1-5:ArrayOfString" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfTroubleTicketRoleAssignment">
+        <sequence>
+            <element name="item" type="cbetrouble-v1-2:TroubleTicketRoleAssignment" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of TroubleTicketRoleAssignment -->
+    <!-- Tigerstripe : End of Datatype definition for TroubleTicketRoleAssignment -->
+    <!-- Tigerstripe : Enumeration definitions for TroubleTicketRole  -->
+    
+    <!-- Common SFR Start -->
+    <complexType name="ConvergentCommentary">
+        <annotation>
+            <documentation>
+			Information Commantaires fields of FSC
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="updateTime" type="dateTime" nillable="true" minOccurs="1" maxOccurs="1"/>
+                    <element name="label" type="string" nillable="true" minOccurs="1" maxOccurs="1"/>
+                    <element name="comment" type="string" nillable="true" minOccurs="1" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfConvergentCommentary">
+        <sequence>
+            <element name="item" type="cbetrouble-v1-2:ConvergentCommentary" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="PersonReachValue">
+        <annotation>
+            <documentation>
+An assignment of a party to a role that it has during the trouble resolution process.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="email" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="mailingList" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="fax" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="phone" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="mobilePhone" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="responsible" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="smsAddress" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="companyName" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="individualPartyName" type="cbeparty-v1-5:IndividualName" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="urbanPropertyAddress" type="cbelocation-v1-5:UrbanPropertyAddressValue" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="urbanPropertySubAddress" type="cbelocation-v1-5:UrbanPropertySubAddressValue" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfPersonReachValue">
+        <sequence>
+            <element name="item" type="cbetrouble-v1-2:PersonReachValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Common SFR End -->
+    
+    
+    <simpleType name="TroubleTicketRole">
+        <annotation>
+            <documentation>
+An interface to hold constants representing names of roles involved with trouble ticketing.
+            </documentation>
+        </annotation>
+        <restriction base="string">
+            <enumeration value="ORIGINATOR"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for TroubleTicketRole  -->
+    <!-- Tigerstripe : Enumeration definitions for TroubleTicketState  -->
+    <simpleType name="TroubleTicketState">
+        <annotation>
+            <documentation>
+A Trouble Ticket may be in one of the following states:  
+- queued: when the TT has been created but the trouble resolution process has not been initiated. 
+- open/active: when appropriate actions to resolve the trouble are being carried. 
+- deferred: when the corrective action on the TT has been postponed. A deferred Ticket can become open/active when specific conditions are met. 
+- cleared: when the trouble has been corrected. If the customer needs to verify that the trouble has been resolved, verification may optionally be awaited by the SP prior to closure of the TT. 
+- closed: when the trouble has been corrected. 
+- disabled: when the TT information cannot be updated due to local conditions. In this state, only read operations can be performed on the TT. 
+ 
+
+            </documentation>
+        </annotation>
+        <restriction base="string">
+            <enumeration value="QUEUED"/>
+            <enumeration value="OPENACTIVE"/>
+            <enumeration value="CLOSED"/>
+            <enumeration value="OPENACTIVE.TO.BE.CANCELED"/>
+    	     <!-- compatibility with 2.0  -->
+            <enumeration value="DEFERRED"/>
+            <enumeration value="CLEARED"/>
+            <enumeration value="CLOSE.CANCELLED"/>
+         </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for TroubleTicketState  -->
+
+
+
+
+
+
+</schema>

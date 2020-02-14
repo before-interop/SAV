@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ *
+ *
+ *  Generated with Tigerstripe(tm) Tigerstripe Workbench Feature 2.2.0.v20070514-1108-IXOqsosF8y087t5
+ *
+ *  Tigerstripe(tm) is a registered trademark of Tigerstripe, Inc.
+ *
+ *  Plugin  : Tigerstripe, Inc., OSS through Java(TM) Initiative/XMLSpecificationPlugin(0.6) 
+ *
+ *  Template templates\packageBased\packageBasedSchema.vm
+ *    
+ *  DO NOT EDIT THIS CODE WAS AUTOMATICALLY GENERATED
+ *
+Copyright 2002-2007 The Members of the OSS through Java(TM) Initiative.
+All rights reserved. Use is subject to license terms.
+ *
+-->
+<!--
+DOCUMENTATION IS PROVIDED "AS IS" AND ALL EXPRESS OR IMPLIED
+CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED
+WARRANTY OF MERCHANTABILITY, FITNESS FOR FOR A PARTICULAR PURPOSE OR
+NON-INFRINGEMENT, ARE DISCLAIMED, EXCEPT TO THE EXTENT THAT SUCH
+DISCLAIMERS ARE HELD TO BE LEGALLY INVALID.
+-->
+<schema targetNamespace="http://ossj.org/xml/Common-CBEDatatypes/v1-5" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:co-v1-5="http://ossj.org/xml/Common/v1-5" xmlns:cbedatatypes-v1-5="http://ossj.org/xml/Common-CBEDatatypes/v1-5" version="v1-5" elementFormDefault="qualified">
+
+    <!-- Imports -->
+
+    <import namespace="http://ossj.org/xml/Common/v1-5" schemaLocation="OSSJ-Common-v1-5.xsd"/>
+    <!-- Tigerstripe : Datatype definitions for Version  (basic, ArrayOf) -->
+    <complexType name="Version">
+        <annotation>
+            <documentation>
+Version type The toString() implementation of this interface shall return a String representation of the version.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="description" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="validFor" type="cbedatatypes-v1-5:TimePeriod" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfVersion">
+        <sequence>
+            <element name="item" type="cbedatatypes-v1-5:Version" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of Version -->
+    <!-- Tigerstripe : End of Datatype definition for Version -->
+    <!-- Tigerstripe : Datatype definitions for StateHandler  (basic, ArrayOf) -->
+    <complexType name="StateHandler">
+        <annotation>
+            <documentation>
+This interface defines the CBE State.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="state" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="supportedStates" type="co-v1-5:ArrayOfString" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfStateHandler">
+        <sequence>
+            <element name="item" type="cbedatatypes-v1-5:StateHandler" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of StateHandler -->
+    <!-- Tigerstripe : End of Datatype definition for StateHandler -->
+    <!-- Tigerstripe : Datatype definitions for Identification  (basic, ArrayOf) -->
+    <complexType name="Identification">
+        <annotation>
+            <documentation>
+An Identification type. This is an abstract class to represent an object that can be used to identify managed objects of interest. It is a convenient point to attach common semantics to different types of Identities (e.g., a PartyIdentity vs. a ResourceIdentity vs. a ServiceIdentity).
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="type" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="value" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="validFor" type="cbedatatypes-v1-5:TimePeriod" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfIdentification">
+        <sequence>
+            <element name="item" type="cbedatatypes-v1-5:Identification" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of Identification -->
+    <!-- Tigerstripe : End of Datatype definition for Identification -->
+    <!-- Tigerstripe : Datatype definitions for TimePeriod  (basic, ArrayOf) -->
+    <complexType name="TimePeriod">
+        <annotation>
+            <documentation>
+A base(value) entity used to represent a period of time. A TimePeriod is a value entity and does not have any business identity.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="startDateTime" type="dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="endDateTime" type="dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfTimePeriod">
+        <sequence>
+            <element name="item" type="cbedatatypes-v1-5:TimePeriod" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of TimePeriod -->
+    <!-- Tigerstripe : End of Datatype definition for TimePeriod -->
+    <!-- Tigerstripe : Datatype definitions for Quantity  (basic, ArrayOf) -->
+    <complexType name="Quantity">
+        <annotation>
+            <documentation>
+A base / value business entity used to represent measurements.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="amount" type="decimal" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="units" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfQuantity">
+        <sequence>
+            <element name="item" type="cbedatatypes-v1-5:Quantity" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of Quantity -->
+    <!-- Tigerstripe : End of Datatype definition for Quantity -->
+    <!-- Tigerstripe : Enumeration definitions for ProceduralStatus  -->
+    <simpleType name="ProceduralStatus">
+        <annotation>
+            <documentation>
+This interface defines the CBE Procedural Status values.
+            </documentation>
+        </annotation>
+        <restriction base="int">
+            <!-- name = INITIALIZATIONREQUIRED -->
+            <enumeration value="10"/>
+            <!-- name = NOTINITIALIZED -->
+            <enumeration value="11"/>
+            <!-- name = INITIALIZING -->
+            <enumeration value="12"/>
+            <!-- name = REPORTING -->
+            <enumeration value="13"/>
+            <!-- name = TERMINATING -->
+            <enumeration value="14"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for ProceduralStatus  -->
+    <!-- Tigerstripe : Enumeration definitions for Presence  -->
+    <simpleType name="Presence">
+        <annotation>
+            <documentation>
+This interface defines the Presence enumeration.
+            </documentation>
+        </annotation>
+        <restriction base="string">
+            <enumeration value="optional"/>
+            <enumeration value="required"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for Presence  -->
+    <!-- Tigerstripe : Enumeration definitions for Status  -->
+    <simpleType name="Status">
+        <annotation>
+            <documentation>
+This interface defines the CBE Status. The status attributes are provided to qualify the operational, usage and/or administrative state attributes. The value of each status attribute may denote the presence of one or more particular conditions applicable to the resource. The presence of any one of these conditions may imply, directly or indirectly, some corresponding value in the operational state, usage state, or administrative state attributes, or in any combination of them. These implications are described separately for each status condition.
+            </documentation>
+        </annotation>
+        <restriction base="int">
+            <!-- name = UNKNOWN -->
+            <enumeration value="0"/>
+            <!-- name = UNDEFINED -->
+            <enumeration value="1"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for Status  -->
+    <!-- Tigerstripe : Enumeration definitions for AvailabilityStatus  -->
+    <simpleType name="AvailabilityStatus">
+        <annotation>
+            <documentation>
+This interface defines the CBE Availability Status values.
+            </documentation>
+        </annotation>
+        <restriction base="int">
+            <!-- name = INTEST -->
+            <enumeration value="10"/>
+            <!-- name = FAILED -->
+            <enumeration value="11"/>
+            <!-- name = POWEROFF -->
+            <enumeration value="12"/>
+            <!-- name = OFFLINE -->
+            <enumeration value="13"/>
+            <!-- name = OFFDUTY -->
+            <enumeration value="14"/>
+            <!-- name = DEPENDENCY -->
+            <enumeration value="15"/>
+            <!-- name = DEGRADED -->
+            <enumeration value="16"/>
+            <!-- name = NOTINSTALLED -->
+            <enumeration value="17"/>
+            <!-- name = LOGFULL -->
+            <enumeration value="18"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for AvailabilityStatus  -->
+    <!-- Tigerstripe : Enumeration definitions for CustomerState  -->
+    <simpleType name="CustomerState">
+        <annotation>
+            <documentation>
+This interface defines the Customer State values.
+            </documentation>
+        </annotation>
+        <restriction base="string">
+            <enumeration value="prospective"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for CustomerState  -->
+    <!-- Tigerstripe : Enumeration definitions for State  -->
+    <simpleType name="State">
+        <annotation>
+            <documentation>
+This interface defines the CBE State. The state attributes are provided to qualify the operational, usage and/or administrative state attributes. The value of each state attribute may denote the presence of one or more particular conditions applicable to the resource. The presence of any one of these conditions may imply, directly or indirectly, some corresponding value in the operational state, usage state, or administrative state attributes, or in any combination of them. These implications are described separately for each status condition.
+            </documentation>
+        </annotation>
+        <restriction base="string">
+            <enumeration value="."/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for State  -->
+    <!-- Tigerstripe : Enumeration definitions for ControlStatus  -->
+    <simpleType name="ControlStatus">
+        <annotation>
+            <documentation>
+This interface defines the CBE Control Status values.
+            </documentation>
+        </annotation>
+        <restriction base="int">
+            <!-- name = SUBJECTTOTEST -->
+            <enumeration value="10"/>
+            <!-- name = PARTOFSERVICESLOCKED -->
+            <enumeration value="11"/>
+            <!-- name = RESERVEDFORTEST -->
+            <enumeration value="12"/>
+            <!-- name = SUSPENDED -->
+            <enumeration value="13"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for ControlStatus  -->
+    <!-- Tigerstripe : Enumeration definitions for UsageState  -->
+    <simpleType name="UsageState">
+        <annotation>
+            <documentation>
+This interface defines the CBE Usage State values.
+            </documentation>
+        </annotation>
+        <restriction base="string">
+            <enumeration value="active"/>
+            <enumeration value="idle"/>
+            <enumeration value="busy"/>
+            <enumeration value="inactive"/>
+            <enumeration value="installed"/>
+            <enumeration value="notinstalled"/>
+            <enumeration value="unknown"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for UsageState  -->
+    <!-- Tigerstripe : Enumeration definitions for LifeCycleState  -->
+    <simpleType name="LifeCycleState">
+        <annotation>
+            <documentation>
+This interface defines the CBE LifeCycle State values.
+            </documentation>
+        </annotation>
+        <restriction base="string">
+            <enumeration value="active"/>
+            <enumeration value="inactive"/>
+            <enumeration value="planned"/>
+            <enumeration value="inactive.planned"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for LifeCycleState  -->
+    <!-- Tigerstripe : Enumeration definitions for AdministrativeState  -->
+    <simpleType name="AdministrativeState">
+        <annotation>
+            <documentation>
+This interface defines the CBE Administrative State values.
+            </documentation>
+        </annotation>
+        <restriction base="string">
+            <enumeration value="locked"/>
+            <enumeration value="unlocked"/>
+            <enumeration value="shuttingdown"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for AdministrativeState  -->
+    <!-- Tigerstripe : Enumeration definitions for AlarmStatus  -->
+    <simpleType name="AlarmStatus">
+        <annotation>
+            <documentation>
+This interface defines the CBE BaseAlarm Status values.
+            </documentation>
+        </annotation>
+        <restriction base="int">
+            <!-- name = UNDERREPAIR -->
+            <enumeration value="10"/>
+            <!-- name = CRITICAL -->
+            <enumeration value="11"/>
+            <!-- name = MAJOR -->
+            <enumeration value="12"/>
+            <!-- name = MINOR -->
+            <enumeration value="13"/>
+            <!-- name = ALARMOUTSTANDING -->
+            <enumeration value="14"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for AlarmStatus  -->
+    <!-- Tigerstripe : Enumeration definitions for StandbyStatus  -->
+    <simpleType name="StandbyStatus">
+        <annotation>
+            <documentation>
+This interface defines the CBE Standby Status values.
+            </documentation>
+        </annotation>
+        <restriction base="int">
+            <!-- name = COLDSTANDBY -->
+            <enumeration value="10"/>
+            <!-- name = HOSTSTANBY -->
+            <enumeration value="11"/>
+            <!-- name = PROVIDINGSERVICE -->
+            <enumeration value="12"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for StandbyStatus  -->
+    <!-- Tigerstripe : Enumeration definitions for OperationalState  -->
+    <simpleType name="OperationalState">
+        <annotation>
+            <documentation>
+This interface defines the CBE Operational State values.
+            </documentation>
+        </annotation>
+        <restriction base="string">
+            <enumeration value="enabled"/>
+            <enumeration value="disabled"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for OperationalState  -->
+
+
+
+
+
+
+</schema>

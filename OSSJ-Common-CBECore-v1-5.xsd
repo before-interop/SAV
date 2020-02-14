@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ *
+ *
+ *  Generated with Tigerstripe(tm) Tigerstripe Workbench Feature 2.2.0.v20070514-1108-IXOqsosF8y087t5
+ *
+ *  Tigerstripe(tm) is a registered trademark of Tigerstripe, Inc.
+ *
+ *  Plugin  : Tigerstripe, Inc., OSS through Java(TM) Initiative/XMLSpecificationPlugin(0.6) 
+ *
+ *  Template templates\packageBased\packageBasedSchema.vm
+ *    
+ *  DO NOT EDIT THIS CODE WAS AUTOMATICALLY GENERATED
+ *
+Copyright 2002-2007 The Members of the OSS through Java(TM) Initiative.
+All rights reserved. Use is subject to license terms.
+ *
+-->
+<!--
+DOCUMENTATION IS PROVIDED "AS IS" AND ALL EXPRESS OR IMPLIED
+CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED
+WARRANTY OF MERCHANTABILITY, FITNESS FOR FOR A PARTICULAR PURPOSE OR
+NON-INFRINGEMENT, ARE DISCLAIMED, EXCEPT TO THE EXTENT THAT SUCH
+DISCLAIMERS ARE HELD TO BE LEGALLY INVALID.
+-->
+<schema targetNamespace="http://ossj.org/xml/Common-CBECore/v1-5" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:co-v1-5="http://ossj.org/xml/Common/v1-5" xmlns:cbecore-v1-5="http://ossj.org/xml/Common-CBECore/v1-5" version="v1-5" elementFormDefault="qualified">
+
+    <!-- Imports -->
+
+    <import namespace="http://ossj.org/xml/Common/v1-5" schemaLocation="OSSJ-Common-v1-5.xsd"/>
+    <!-- Tigerstripe : Entity definitions for Association  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="AssociationValue">
+        <annotation>
+            <documentation>
+The AssociationValue is the base from which all association interfaces are derived. 
+ Associations are represented in the CBE package as managed entities (according to the OSS through Java definition of managed entity). Association instances have their own keys.  
+ The following attributes of an AssociationValue are set at creation:  
+- EntityKey 
+- the key of object A (A end) 
+- the key of object Z (Z end) 
+ Note that other attributes could be defined by concrete association values derived from this base interface. However these attributes should be specific to this association and should not depend on the state of other objects. 
+ The roles are captured in the definition of the association attributes and in the corresponding {@link AssociationRule AssociationRule}. For example in a "SupportedBy" type of association for one of the objects will be defined an attribute "supporting" and "supported" for the other. The corresponding AssociationRule will define the A and Z end roles as "supporting" and "supported". 
+ An {@link AssociationRule AssociationRule} is provided for every concrete association type. The rule defines the constraints for this association type (e.g. roles, cardinality, association constraints). 
+ Associations are uniquely identified by their keys. See {@link AssociationKey AssociationKey} for more information. 
+ The AssociationValue inherits from ManagedEntityValue all methods for population, generic attribute access and serialization.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbecore-v1-5:CBEManagedEntityValue">    
+                <sequence>
+                    <element name="AEndKey" type="cbecore-v1-5:EntityKey" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="ZEndKey" type="cbecore-v1-5:EntityKey" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfAssociationValue">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:AssociationValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="AssociationKey">
+        <annotation>
+            <documentation>
+                This AssociationKey encapsulates all the information that is necessary to 
+                identify a particular instance of a AssociationValue. The type of the 
+                primary key for this AssociationKey definition is: anyType 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:CBEManagedEntityKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfAssociationKey">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:AssociationKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="AssociationKeyResult">
+        <annotation>
+            <documentation>
+                The AssociationKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a AssociationValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:CBEManagedEntityKeyResult">
+                <sequence>
+                     <element name="associationKey" type="cbecore-v1-5:AssociationKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfAssociationKeyResult">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:AssociationKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of Association -->
+    <!-- Tigerstripe : End of Entity definition for Association -->
+    <!-- Tigerstripe : Entity definitions for EntitySpecification  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="EntitySpecificationValue">
+        <annotation>
+            <documentation>
+EntitySpecificationValue is the base for all specification entities. 
+ An entity specification captures characteristics and constraints applicable to instances of the same entity type. For example a "GoldBroadbandAccessServicespecification" will capture the characteristics, configuration and QoS parameter ranges, specific to a "Gold" Broadband Access service offering. Several specification instances may exist for the same entity type. "Gold", "Silver" and "Bronze" specifications may be defined for a "BroadbandAccessService". 
+ Catalogues are collections of entity specifications (e.g. service catalogue composed of service specifications, product catalogue composed of product specifications, resource catalogue composed of resource specifications). 
+ An entity instance is defined by a single entity specification. The same entity specification may be used to define multiple entity instances. An association exists between the entity specification and the entity instances, defined by this specification (the values of the describingSpecification attributes of the entities are set with the key of the specification). The specification defines default values for all attributes of the corresponding entity type. 
+ Entity specifications provide a factory method for the attribute constraints they contain. Note that the CBE package does not specify through how attribute constraints are defined. Specific implementations of the CBE interfaces should define the concrete attribute constraint interfaces and the methods on the entity specification that allow to get and set these constraints. 
+ Entity specifications are represented as managed entities (according to the OSS through Java definition of managed entity). EntitySpecification instances have their own key and can be retrieved through API specific JVTSession interfaces. The following example show how to use the Inventory API to update a ProductSpecification:   JVTInventorySession jvt = ...; EntitySpecificationKey key = ...; ProductSpecificationValue value = (ProductSpecificationValue)jvt.getEntitySpecificationByKey(key); value.setAttributeValue("..."); jvt.setEntitySpecificationByValue(value);   
+ The specification for a given entity type may be used as a factory for value objects or for creating entity instances of this entity type. For example using the Inventory API:  JVTInventorySession.makeEntityValueFromSpecification() and the JVTInventorySession.createEntityFromSpecification() methods.  
+ Entity specifications are uniquely identified by their keys. See {@link EntitySpecificationKey} for more information. 
+ EntitySpecificationValue inherits from ManagedEntityValue all methods for population, generic attribute access and serialization.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbecore-v1-5:CBEManagedEntityValue">    
+                <sequence>
+                    <element name="describedEntityType" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="description" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="describedEntityCharacterizedBy" type="cbecore-v1-5:ArrayOfCharacteristicSpecification" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfEntitySpecificationValue">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:EntitySpecificationValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="EntitySpecificationKey">
+        <annotation>
+            <documentation>
+                This EntitySpecificationKey encapsulates all the information that is necessary to 
+                identify a particular instance of a EntitySpecificationValue. The type of the 
+                primary key for this EntitySpecificationKey definition is: anyType 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:CBEManagedEntityKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfEntitySpecificationKey">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:EntitySpecificationKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="EntitySpecificationKeyResult">
+        <annotation>
+            <documentation>
+                The EntitySpecificationKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a EntitySpecificationValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:CBEManagedEntityKeyResult">
+                <sequence>
+                     <element name="entitySpecificationKey" type="cbecore-v1-5:EntitySpecificationKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfEntitySpecificationKeyResult">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:EntitySpecificationKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of EntitySpecification -->
+    <!-- Tigerstripe : End of Entity definition for EntitySpecification -->
+    <!-- Tigerstripe : Entity definitions for CBEManagedEntity  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="CBEManagedEntityValue">
+        <annotation>
+            <documentation>
+This is the base for all the first class CBE Managed Entities  These first class objects may be in one of the following categories:  
+- entities 
+- entitiy specifications, describing entities 
+- associations, representing binary relationships between entities or specifications 
+ CBEManagedEntityValue is the base value type interface for the CBE Entity, Entity Specification and Association Values.  
+This interface extends the scope of the AttributeAccess interface to cover also the CharacteristicSpecifications of CBEManagedEntities. If a method in AttributeAccess worked on attributes only before, its semantic is now extended to handle characteristic specifications in an equal way. In that sense, characteristic specifications are attributes, but without a getter and setter. For example, {@link javax.oss.AttributeAccess#isFullyPopulated() isFullyPopulated} now only returns true if all static attributes and all characteristic specifications are populated; {@link javax.oss.AttributeAccess#getAttributeNames() getAttributeNames} returns the names of the static attributes (as previously) plus the names of the characteristic specifications.  
+When designing the characteristic specifications, the static attributes names are known to the designer, who has to take care that there must not be a name clash, means there must not be a static attribute and a characteristicSpecification with the same name.  
+The characterizedBy and describedBy fields allow to add attributes to a CBEManagedEntityValue without the need to change the interface. For example, bandwidth is characteristic of many different types of services; if bandwidth is important (e.g., from the point-of-view of a Customer purchasing this Service) then bandwidth would be a CharacteristicValue describing that particular Service.  
+In order to keep the CBEManagedEntityValue consistent, the array of CharacteristicSpecification returned by {@link javax.oss.cbe.CBEManagedEntityValue#getCharacterizedBy() CBEManagedEntityValue.getCharacterizedBy()} and {@link javax.oss.cbe.EntitySpecificationValue#getDescribedEntityCharacterizedBy() EntitySpecificationValue.getDescribedEntityCharacterizedBy()} (if the corresponding {@link javax.oss.cbe.EntitySpecificationValue} exists and is identified by its describing specification key in the {@link javax.oss.cbe.EntityValue#getDescribingSpecificationKey() EntityValue.getDescribingSpecificationKey()}) contains the exaustive list of supported attributes of the CharacteristicValue type.  The appropriated {@link CharacteristicSpecification}(s) shall be provided before the usage of {@link CBEManagedEntityValue#setDescribedBy(javax.oss.cbe.CharacteristicValue[]) setDescribedBy()} or {@link javax.oss.AttributeAccess#setAttributeValue(java.lang.String,java.lang.Object) AttributeAccess.setAttributeValue()} applied to a charateristic.  
+A call to {@link CBEManagedEntityValue#getDescribedBy() getDescribedBy} returns all CharateristicValues for this entity. CharacteristicValues could be returned or set individually by calling the generic {@link javax.oss.AttributeAccess#getAttributeValue(java.lang.String) AttributeAccess.getAttributeValue()} or {@link javax.oss.AttributeAccess#setAttributeValue(java.lang.String, java.lang.Object) AttributeAccess.setAttributeValue()} or {@link javax.oss.AttributeAccess#setAttributeValues(java.util.Map) AttributeAccess.setAttributeValues()}methods. 
+  Important Note:
+ "describedBy" and "characterizedBy" are considered as "static" attributes of the CBEmanagedEntityValue. So attribute management also applies to them as CharacteristicValue[] and CharacteristicSpecification[] type respectively. 
+
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="co-v1-5:ManagedEntityValue">    
+                <sequence>
+                    <element name="subGraphId" type="long" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="characterizedBy" type="cbecore-v1-5:ArrayOfCharacteristicSpecification" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="describedBy" type="cbecore-v1-5:ArrayOfCharacteristicValue" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfCBEManagedEntityValue">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:CBEManagedEntityValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="CBEManagedEntityKey">
+        <annotation>
+            <documentation>
+                This CBEManagedEntityKey encapsulates all the information that is necessary to 
+                identify a particular instance of a CBEManagedEntityValue. The type of the 
+                primary key for this CBEManagedEntityKey definition is: anyType 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="co-v1-5:ManagedEntityKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfCBEManagedEntityKey">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:CBEManagedEntityKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="CBEManagedEntityKeyResult">
+        <annotation>
+            <documentation>
+                The CBEManagedEntityKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a CBEManagedEntityValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="co-v1-5:ManagedEntityKeyResult">
+                <sequence>
+                     <element name="cBEManagedEntityKey" type="cbecore-v1-5:CBEManagedEntityKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfCBEManagedEntityKeyResult">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:CBEManagedEntityKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of CBEManagedEntity -->
+    <!-- Tigerstripe : End of Entity definition for CBEManagedEntity -->
+    <!-- Tigerstripe : Entity definitions for Entity  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="EntityValue">
+        <annotation>
+            <documentation>
+This is the base from which all entity value interfaces are derived. 
+ Entities are represented in the CBE package as managed entities (according to the OSS through Java definition of managed entity). 
+ EntityValue inherits from ManagedEntityValue all methods for population, generic attribute access and serialization. 
+
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbecore-v1-5:CBEManagedEntityValue">    
+                <sequence>
+                    <element name="describingSpecificationKey" type="cbecore-v1-5:EntitySpecificationKey" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfEntityValue">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:EntityValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="EntityKey">
+        <annotation>
+            <documentation>
+                This EntityKey encapsulates all the information that is necessary to 
+                identify a particular instance of a EntityValue. The type of the 
+                primary key for this EntityKey definition is: anyType 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:CBEManagedEntityKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfEntityKey">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:EntityKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="EntityKeyResult">
+        <annotation>
+            <documentation>
+                The EntityKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a EntityValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:CBEManagedEntityKeyResult">
+                <sequence>
+                     <element name="entityKey" type="cbecore-v1-5:EntityKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfEntityKeyResult">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:EntityKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of Entity -->
+    <!-- Tigerstripe : End of Entity definition for Entity -->
+    <!-- Tigerstripe : Datatype definitions for AssociationRule  (basic, ArrayOf) -->
+    <complexType name="AssociationRule">
+        <annotation>
+            <documentation>
+An association rule defines the constraints for the corresponding association type. An association rule should be provided for every concrete association type. 
+  
+ Association Rules define:  
+- the roles at each association end 
+- the cardinality of the association at each association end 
+- the type of entities or specifications involved at each association end 
+- the constraints applicable to this association 
+ 
+ If the constraints defined in an association rule are not respected during an update operation (e.g. a creation of an association or a set operation on an entity involved in the association) an AssociationRuleViolationException is thrown.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="associationType" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="AEndRole" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="ZEndRole" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="AEndCardinality" type="cbecore-v1-5:Cardinality" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="ZEndCardinality" type="cbecore-v1-5:Cardinality" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="AEndType" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="ZEndType" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfAssociationRule">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:AssociationRule" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of AssociationRule -->
+    <!-- Tigerstripe : End of Datatype definition for AssociationRule -->
+    <!-- Tigerstripe : Datatype definitions for HierarchicalPrimaryKey  (basic, ArrayOf) -->
+    <complexType name="HierarchicalPrimaryKey">
+        <annotation>
+            <documentation>
+The HierarchicalPrimaryKey interface represents an inventory key based on a hierarchy. The DN (Distiguished Name) of the inventory object is composed of the RDN (Relative Distiguished Name)and the DN of the parent. In case the entity is directly under the top of the hierarchy (i.e. the parent is "top") the parent DN is a null String . The HierarchicalName interface (see the interface definition below) represents a key based on a hierarchy, e.g., X.500 or LDAP directory. Every object in the hierarchy has a Distinguished Name (DN), which is made up of a sequence of Relative Distinguished Names (RDNs). The RDNs are separated by commas. An RDN is unique for given base in the hierarchy. A DN is unique to the entire hierarchy. Here is an example of a DN: "network=Canada,subnetwork=Ottawa,device=OttawaRouter1" The RDNs of this DN are:  
+- RDN =&gt; network=Canada 
+- RDN =&gt; subnetwork=Ottawa 
+- RDN =&gt; device=OttawaRouter1 
+ The parent DN of the "OttawaRouter1" object is "network=Canada,subnetwork=Ottawa".
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="rdn" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="parentDn" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfHierarchicalPrimaryKey">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:HierarchicalPrimaryKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of HierarchicalPrimaryKey -->
+    <!-- Tigerstripe : End of Datatype definition for HierarchicalPrimaryKey -->
+    <!-- Tigerstripe : Datatype definitions for Cardinality  (basic, ArrayOf) -->
+    <complexType name="Cardinality">
+        <annotation>
+            <documentation>
+The Cardinality defines the numeric relationships between occurrences of the entities on either end of a relationship. This interface defines the cardinality value of the association's end. The Cardinality interface is used in {@link AssociationRule AssociationRules}. An association rule defines the constraints for a particular association type and the cardinality is one of the constraints defined in the rule. The cardinality is accessed through the {@link AssociationRule#getAEndCardinality getAEndCardinality()} and {@link AssociationRule#getZEndCardinality getZEndCardinality()} methods of the {@link AssociationRule AssociationRule} interface.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="minNumber" type="int" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="maxNumber" type="int" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfCardinality">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:Cardinality" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of Cardinality -->
+    <!-- Tigerstripe : End of Datatype definition for Cardinality -->
+    <!-- Tigerstripe : Datatype definitions for CharacteristicSpecification  (basic, ArrayOf) -->
+    <complexType name="CharacteristicSpecification">
+        <annotation>
+            <documentation>
+Specifies the name and type of a characteristicValue. 
+ A CharacteristicSpecification a description an attribute that can be added to an entity without the need to modify the interface for it. All CharacteristicSpecifications of an entity can be obtain using the CBEManagedEntity.characterizedBy() method. The association between a CharacteristicSpecification and a CharacteristicValue is established when the CharacteristicSpecification.name attribute and the CharacteristicValue.characteristic attribute are equals.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="name" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="type" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="description" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfCharacteristicSpecification">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:CharacteristicSpecification" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of CharacteristicSpecification -->
+    <!-- Tigerstripe : End of Datatype definition for CharacteristicSpecification -->
+    <!-- Tigerstripe : Datatype definitions for CharacteristicValue  (basic, ArrayOf) -->
+    <complexType name="CharacteristicValue">
+        <annotation>
+            <documentation>
+CharacteristicValue represents an attribute of {@link CBEManagedEntityValue}. It contains a value and a name. 
+ This interface allows to add attributes to a CBEManagedEntityValue without the need to change the interface. For example, bandwidth is characteristic of many different types of services; if bandwidth is important (e.g., from the point-of-view of a Customer purchasing this Service) then bandwidth would be a CharacteristicValue describing that particular Service. 
+ CharacteristicValue is described by a {@link CharacteristicSpecification}. The association between a CharacteristicSpecification and a CharacteristicValue is established when the CharacteristicSpecification.name attribute and the CharacteristicValue.characteristic attribute are equals. 
+ For any CBEManagedEntityValue, the CBEManagedEntityValue.getDescribedBy() returns the array of CharacteristicValue and the call to CBEManagedEntityValue.getCharacterizedBy() returns the array of the supported CharacteristicSpecification. 
+
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="value" type="anyType" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="characteristic" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfCharacteristicValue">
+        <sequence>
+            <element name="item" type="cbecore-v1-5:CharacteristicValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of CharacteristicValue -->
+    <!-- Tigerstripe : End of Datatype definition for CharacteristicValue -->
+    <!-- Tigerstripe : Enumeration definitions for CBECoreType  -->
+    <simpleType name="CBECoreType">
+        <annotation>
+            <documentation>
+This interface defines the CBECoreType enumeration. The type of a CBE object may be one of the following:  
+-  entity 
+-  entity specification 
+-  association 
+
+            </documentation>
+        </annotation>
+        <restriction base="string">
+            <enumeration value="Entity"/>
+            <enumeration value="Specification"/>
+            <enumeration value="Association"/>
+            <enumeration value="Event"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for CBECoreType  -->
+    <!-- Tigerstripe : Exception definition for AssociationRuleViolationException  -->
+    <complexType name="AssociationRuleViolationException">
+        <annotation>
+            <documentation>
+An AssociationRuleViolationException is thrown to indicate that an update operation (e.g. a creation of an association or a set operation on an entity involved in the association) violates the constraints defined in the AssociationRule for this association type (e.g. roles, cardinality, association constraints).
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="co-v1-5:OssIllegalStateException">
+                <sequence>
+                </sequence>
+             </extension>
+        </complexContent>
+    </complexType>
+    <!-- Tigerstripe : End of Exception definition for AssociationRuleViolationException  -->
+
+
+
+
+
+
+</schema>

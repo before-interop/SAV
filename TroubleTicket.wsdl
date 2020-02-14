@@ -1,0 +1,457 @@
+<wsdl:definitions name="JVTTroubleTicketSession"
+    targetNamespace ="http://ossj.org/wsdl/TroubleTicket/v1-2"
+    xmlns:ws-JVTTroubleTicketSession="http://ossj.org/wsdl/TroubleTicket/v1-2"
+
+    xmlns:tt-v1-2="http://ossj.org/xml/TroubleTicket/v1-2"
+    xmlns:co-v1-5="http://ossj.org/xml/Common/v1-5"
+
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    
+	xmlns:header="http://interop-fibre.fr/xml/TroubleTicketHeader/v1-0"
+    >
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import namespace="http://ossj.org/xml/TroubleTicket/v1-2"
+                schemaLocation="OSSJ-TroubleTicket-v1-2.xsd"/>
+            <xsd:import namespace="http://ossj.org/xml/Common/v1-5"
+                schemaLocation="OSSJ-Common-v1-5.xsd"/>
+			<xsd:import namespace="http://interop-fibre.fr/xml/TroubleTicketHeader/v1-0"
+                schemaLocation="TroubleTicketHeader-v1-0.xsd"/>    				
+        </xsd:schema>
+    </wsdl:types>
+	<!--  TroubleTicketHeader : Message definitions -->
+	<wsdl:message name="TroubleTicketHeaderRequest">
+		<wsdl:part name="parameters" element="header:TroubleTicketHeaderRequest"/>
+	</wsdl:message>
+	<wsdl:message name="TroubleTicketHeaderResponse">
+		<wsdl:part name="parameters" element="header:TroubleTicketHeaderResponse"/>
+	</wsdl:message>
+    
+    
+    <wsdl:message name="createTroubleTicketByValueRequest">
+        <wsdl:part name="parameters" element="tt-v1-2:createTroubleTicketByValueRequest" />
+    </wsdl:message>
+    <wsdl:message name="createTroubleTicketByValueResponse">
+        <wsdl:part name="parameters" element="tt-v1-2:createTroubleTicketByValueResponse" />
+    </wsdl:message>
+    <wsdl:message name="createTroubleTicketByValueException">
+        <wsdl:part name="parameters" element="tt-v1-2:createTroubleTicketByValueException" />
+    </wsdl:message>
+    
+    <wsdl:message name="setTroubleTicketByValueRequest">
+        <wsdl:part name="parameters" element="tt-v1-2:setTroubleTicketByValueRequest" />
+    </wsdl:message>
+    <wsdl:message name="setTroubleTicketByValueResponse">
+        <wsdl:part name="parameters" element="tt-v1-2:setTroubleTicketByValueResponse" />
+    </wsdl:message>
+    <wsdl:message name="setTroubleTicketByValueException">
+        <wsdl:part name="parameters" element="tt-v1-2:setTroubleTicketByValueException" />
+    </wsdl:message>
+    
+    <wsdl:message name="getTroubleTicketByKeyRequest">
+        <wsdl:part name="parameters" element="tt-v1-2:getTroubleTicketByKeyRequest" />
+    </wsdl:message>
+    <wsdl:message name="getTroubleTicketByKeyResponse">
+        <wsdl:part name="parameters" element="tt-v1-2:getTroubleTicketByKeyResponse" />
+    </wsdl:message>
+    <wsdl:message name="getTroubleTicketByKeyException">
+        <wsdl:part name="parameters" element="tt-v1-2:getTroubleTicketByKeyException" />
+    </wsdl:message>    
+    
+    <wsdl:message name="getTroubleTicketPrivateDataRequest">
+        <wsdl:part name="parameters" element="tt-v1-2:getTroubleTicketPrivateDataRequest" />
+    </wsdl:message>
+    <wsdl:message name="getTroubleTicketPrivateDataResponse">
+        <wsdl:part name="parameters" element="tt-v1-2:getTroubleTicketPrivateDataResponse" />
+    </wsdl:message>
+    <wsdl:message name="getTroubleTicketPrivateDataException">
+        <wsdl:part name="parameters" element="tt-v1-2:getTroubleTicketPrivateDataException" />
+    </wsdl:message> 
+    
+    <wsdl:message name="getTroubleTicketPublicDataRequest">
+        <wsdl:part name="parameters" element="tt-v1-2:getTroubleTicketPublicDataRequest" />
+    </wsdl:message>
+    <wsdl:message name="getTroubleTicketPublicDataResponse">
+        <wsdl:part name="parameters" element="tt-v1-2:getTroubleTicketPublicDataResponse" />
+    </wsdl:message>
+    <wsdl:message name="getTroubleTicketPublicDataException">
+        <wsdl:part name="parameters" element="tt-v1-2:getTroubleTicketPublicDataException" />
+    </wsdl:message>  
+    
+    <!-- Meta data operatioins -->
+ 
+    <wsdl:message name="getSupportedOptionalOperationsResponse">
+		<wsdl:part name="parameters" element="co-v1-5:getSupportedOptionalOperationsResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getSupportedOptionalOperationsRequest">
+		<wsdl:part name="parameters" element="co-v1-5:getSupportedOptionalOperationsRequest"/>
+	</wsdl:message>
+	<wsdl:message name="getSupportedOptionalOperationsException">
+		<wsdl:part name="parameters" element="co-v1-5:getSupportedOptionalOperationsException"/>
+	</wsdl:message>
+	<wsdl:message name="getManagedEntityTypesResponse">
+		<wsdl:part name="parameters" element="co-v1-5:getManagedEntityTypesResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getManagedEntityTypesRequest">
+		<wsdl:part name="parameters" element="co-v1-5:getManagedEntityTypesRequest"/>
+	</wsdl:message>
+	<wsdl:message name="getManagedEntityTypesException">
+		<wsdl:part name="parameters" element="co-v1-5:getManagedEntityTypesException"/>
+	</wsdl:message>
+	<wsdl:message name="getEventTypesResponse">
+		<wsdl:part name="parameters" element="co-v1-5:getEventTypesResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getEventTypesRequest">
+		<wsdl:part name="parameters" element="co-v1-5:getEventTypesRequest"/>
+	</wsdl:message>
+	<wsdl:message name="getEventTypesException">
+		<wsdl:part name="parameters" element="co-v1-5:getEventTypesException"/>
+	</wsdl:message>
+	<wsdl:message name="getEventDescriptorResponse">
+		<wsdl:part name="parameters" element="co-v1-5:getEventDescriptorResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getEventDescriptorRequest">
+		<wsdl:part name="parameters" element="co-v1-5:getEventDescriptorRequest"/>
+	</wsdl:message>
+	<wsdl:message name="getEventDescriptorException">
+		<wsdl:part name="parameters" element="co-v1-5:getEventDescriptorException"/>
+	</wsdl:message>
+	
+	<wsdl:message name="getUpdateProcedureTypesResponse">
+		<wsdl:part name="parameters" element="co-v1-5:getUpdateProcedureTypesResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getUpdateProcedureTypesRequest">
+		<wsdl:part name="parameters" element="co-v1-5:getUpdateProcedureTypesRequest"/>
+	</wsdl:message>
+	<wsdl:message name="getUpdateProcedureTypesException">
+		<wsdl:part name="parameters" element="co-v1-5:getUpdateProcedureTypesException"/>
+	</wsdl:message>
+	
+	<wsdl:message name="getNamedQueryTypesResponse">
+		<wsdl:part name="parameters" element="co-v1-5:getNamedQueryTypesResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getNamedQueryTypesRequest">
+		<wsdl:part name="parameters" element="co-v1-5:getNamedQueryTypesRequest"/>
+	</wsdl:message>
+	<wsdl:message name="getNamedQueryTypesException">
+		<wsdl:part name="parameters" element="co-v1-5:getNamedQueryTypesException"/>
+	</wsdl:message>
+
+    <!-- Messages for Interface artifact methods ( JVTTroubleTicketSession ) -->
+    <wsdl:message name="getTroubleTicketItemTypesResponse">
+        <wsdl:part name="parameters"
+             element="tt-v1-2:getTroubleTicketItemTypesResponse" />
+    </wsdl:message>
+    <wsdl:message name="getTroubleTicketItemTypesRequest">
+        <wsdl:part name="parameters"
+             element="tt-v1-2:getTroubleTicketItemTypesRequest" />
+    </wsdl:message>
+    <wsdl:message name="getTroubleTicketItemTypesException">
+        <wsdl:part name="parameters"
+             element="tt-v1-2:getTroubleTicketItemTypesException" />
+    </wsdl:message>
+    
+	<wsdl:message name="getTroubleTicketTypesResponse">
+        <wsdl:part name="parameters"
+             element="tt-v1-2:getTroubleTicketTypesResponse" />
+    </wsdl:message>
+    <wsdl:message name="getTroubleTicketTypesRequest">
+        <wsdl:part name="parameters"
+             element="tt-v1-2:getTroubleTicketTypesRequest" />
+    </wsdl:message>
+    <wsdl:message name="getTroubleTicketTypesException">
+        <wsdl:part name="parameters"
+             element="tt-v1-2:getTroubleTicketTypesException" />
+    </wsdl:message>
+    <!-- Meta data operatioins End-->
+    
+    <wsdl:portType name="JVTTroubleTicketSessionWSPort">
+
+        <wsdl:operation name="createTroubleTicketByValue">
+            <wsdl:input name="createTroubleTicketByValueRequest" message="ws-JVTTroubleTicketSession:createTroubleTicketByValueRequest" />
+            <wsdl:output name="createTroubleTicketByValueResponse" message="ws-JVTTroubleTicketSession:createTroubleTicketByValueResponse" />
+            <wsdl:fault name="createTroubleTicketByValueException" message="ws-JVTTroubleTicketSession:createTroubleTicketByValueException" />
+        </wsdl:operation>
+
+        <wsdl:operation name="setTroubleTicketByValue">
+            <wsdl:input name="setTroubleTicketByValueRequest" message="ws-JVTTroubleTicketSession:setTroubleTicketByValueRequest" />
+            <wsdl:output name="setTroubleTicketByValueResponse" message="ws-JVTTroubleTicketSession:setTroubleTicketByValueResponse" />
+            <wsdl:fault name="setTroubleTicketByValueException" message="ws-JVTTroubleTicketSession:setTroubleTicketByValueException" />
+        </wsdl:operation>
+        
+        <wsdl:operation name="getTroubleTicketByKey">
+            <wsdl:input name="getTroubleTicketByKeyRequest" message="ws-JVTTroubleTicketSession:getTroubleTicketByKeyRequest" />
+            <wsdl:output name="getTroubleTicketByKeyResponse" message="ws-JVTTroubleTicketSession:getTroubleTicketByKeyResponse" />
+            <wsdl:fault name="getTroubleTicketByKeyException" message="ws-JVTTroubleTicketSession:getTroubleTicketByKeyException" />
+        </wsdl:operation>
+        
+        <wsdl:operation name="getTroubleTicketPrivateData">
+            <wsdl:input name="getTroubleTicketPrivateDataRequest" message="ws-JVTTroubleTicketSession:getTroubleTicketPrivateDataRequest" />
+            <wsdl:output name="getTroubleTicketPrivateDataResponse" message="ws-JVTTroubleTicketSession:getTroubleTicketPrivateDataResponse" />
+            <wsdl:fault name="getTroubleTicketPrivateDataException" message="ws-JVTTroubleTicketSession:getTroubleTicketPrivateDataException" />
+        </wsdl:operation>
+
+        <wsdl:operation name="getTroubleTicketPublicData">
+            <wsdl:input name="getTroubleTicketPublicDataRequest" message="ws-JVTTroubleTicketSession:getTroubleTicketPublicDataRequest" />
+            <wsdl:output name="getTroubleTicketPublicDataResponse" message="ws-JVTTroubleTicketSession:getTroubleTicketPublicDataResponse" />
+            <wsdl:fault name="getTroubleTicketPublicDataException" message="ws-JVTTroubleTicketSession:getTroubleTicketPublicDataException" />
+        </wsdl:operation>  
+        
+         <!-- Common API 1.5 : Operations from JVTSession -->
+          <wsdl:operation name="getSupportedOptionalOperations">
+           <wsdl:input name="getSupportedOptionalOperationsRequest" message="ws-JVTTroubleTicketSession:getSupportedOptionalOperationsRequest"/>
+           <wsdl:output name="getSupportedOptionalOperationsResponse" message="ws-JVTTroubleTicketSession:getSupportedOptionalOperationsResponse"/>
+           <wsdl:fault name="getSupportedOptionalOperationsException" message="ws-JVTTroubleTicketSession:getSupportedOptionalOperationsException"/>
+          </wsdl:operation>
+          <wsdl:operation name="getManagedEntityTypes">
+           <wsdl:input name="getManagedEntityTypesRequest" message="ws-JVTTroubleTicketSession:getManagedEntityTypesRequest"/>
+           <wsdl:output name="getManagedEntityTypesResponse" message="ws-JVTTroubleTicketSession:getManagedEntityTypesResponse"/>
+           <wsdl:fault name="getManagedEntityTypesException" message="ws-JVTTroubleTicketSession:getManagedEntityTypesException"/>
+          </wsdl:operation>
+          <wsdl:operation name="getEventTypes">
+           <wsdl:input name="getEventTypesRequest" message="ws-JVTTroubleTicketSession:getEventTypesRequest"/>
+           <wsdl:output name="getEventTypesResponse" message="ws-JVTTroubleTicketSession:getEventTypesResponse"/>
+           <wsdl:fault name="getEventTypesException" message="ws-JVTTroubleTicketSession:getEventTypesException"/>
+          </wsdl:operation>
+          <wsdl:operation name="getEventDescriptor">
+           <wsdl:input name="getEventDescriptorRequest" message="ws-JVTTroubleTicketSession:getEventDescriptorRequest"/>
+           <wsdl:output name="getEventDescriptorResponse" message="ws-JVTTroubleTicketSession:getEventDescriptorResponse"/>
+           <wsdl:fault name="getEventDescriptorException" message="ws-JVTTroubleTicketSession:getEventDescriptorException"/>
+          </wsdl:operation>
+
+          <wsdl:operation name="getUpdateProcedureTypes">
+           <wsdl:input name="getUpdateProcedureTypesRequest" message="ws-JVTTroubleTicketSession:getUpdateProcedureTypesRequest"/>
+           <wsdl:output name="getUpdateProcedureTypesResponse" message="ws-JVTTroubleTicketSession:getUpdateProcedureTypesResponse"/>
+           <wsdl:fault name="getUpdateProcedureTypesException" message="ws-JVTTroubleTicketSession:getUpdateProcedureTypesException"/>
+          </wsdl:operation>
+
+          <wsdl:operation name="getNamedQueryTypes">
+           <wsdl:input name="getNamedQueryTypesRequest" message="ws-JVTTroubleTicketSession:getNamedQueryTypesRequest"/>
+           <wsdl:output name="getNamedQueryTypesResponse" message="ws-JVTTroubleTicketSession:getNamedQueryTypesResponse"/>
+           <wsdl:fault name="getNamedQueryTypesException" message="ws-JVTTroubleTicketSession:getNamedQueryTypesException"/>
+          </wsdl:operation>
+          
+       <!-- Operations for Interface artifact methods ( JVTTroubleTicketSession ) -->
+        <wsdl:operation name="getTroubleTicketItemTypes">
+            <wsdl:input
+                name="getTroubleTicketItemTypesRequest"
+                message="ws-JVTTroubleTicketSession:getTroubleTicketItemTypesRequest" />
+            <wsdl:output
+                name="getTroubleTicketItemTypesResponse"
+                message="ws-JVTTroubleTicketSession:getTroubleTicketItemTypesResponse" />
+            <wsdl:fault
+                name="getTroubleTicketItemTypesException"
+                message="ws-JVTTroubleTicketSession:getTroubleTicketItemTypesException" />
+        </wsdl:operation>
+		<wsdl:operation name="getTroubleTicketTypes">
+            <wsdl:input
+                name="getTroubleTicketTypesRequest"
+                message="ws-JVTTroubleTicketSession:getTroubleTicketTypesRequest" />
+            <wsdl:output
+                name="getTroubleTicketTypesResponse"
+                message="ws-JVTTroubleTicketSession:getTroubleTicketTypesResponse" />
+            <wsdl:fault
+                name="getTroubleTicketTypesException"
+                message="ws-JVTTroubleTicketSession:getTroubleTicketTypesException" />
+        </wsdl:operation>    
+       
+    </wsdl:portType>
+
+
+    <wsdl:binding name="JVTTroubleTicketSessionSoapBinding"
+        type="ws-JVTTroubleTicketSession:JVTTroubleTicketSessionWSPort">
+        <soap:binding style="document"
+            transport="http://schemas.xmlsoap.org/soap/http" />
+        
+        <wsdl:operation name="createTroubleTicketByValue">
+           <soap:operation soapAction="createTroubleTicketByValue" style="document" />
+           <wsdl:input name="createTroubleTicketByValueRequest">
+			   <soap:header message="ws-JVTTroubleTicketSession:TroubleTicketHeaderRequest" part="parameters" use="literal"/>
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:input>
+           <wsdl:output name="createTroubleTicketByValueResponse">
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:output>
+           <wsdl:fault name="createTroubleTicketByValueException">
+               <soap:fault name="createTroubleTicketByValueException" use="literal" />
+           </wsdl:fault>
+        </wsdl:operation>
+        
+        <wsdl:operation name="setTroubleTicketByValue">
+           <soap:operation soapAction="setTroubleTicketByValue" style="document" />
+           <wsdl:input name="setTroubleTicketByValueRequest">
+           	   <soap:header message="ws-JVTTroubleTicketSession:TroubleTicketHeaderRequest" part="parameters" use="literal"/>
+               <soap:body parts="parameters" use="literal" />               
+           </wsdl:input>
+           <wsdl:output name="setTroubleTicketByValueResponse">
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:output>
+           <wsdl:fault name="setTroubleTicketByValueException">
+               <soap:fault name="setTroubleTicketByValueException" use="literal" />
+           </wsdl:fault>
+        </wsdl:operation>
+        
+        <wsdl:operation name="getTroubleTicketByKey">
+           <soap:operation soapAction="getTroubleTicketByKey" style="document" />
+           <wsdl:input name="getTroubleTicketByKeyRequest">
+           	   <soap:header message="ws-JVTTroubleTicketSession:TroubleTicketHeaderRequest" part="parameters" use="literal"/>
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:input>
+           <wsdl:output name="getTroubleTicketByKeyResponse">
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:output>
+           <wsdl:fault name="getTroubleTicketByKeyException">
+               <soap:fault name="getTroubleTicketByKeyException" use="literal" />
+           </wsdl:fault>
+        </wsdl:operation>          
+        	
+       
+        <wsdl:operation name="getTroubleTicketPrivateData">
+           <soap:operation soapAction="getTroubleTicketPrivateData" style="document" />
+           <wsdl:input name="getTroubleTicketPrivateDataRequest">
+               <soap:header message="ws-JVTTroubleTicketSession:TroubleTicketHeaderRequest" part="parameters" use="literal"/>
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:input>
+           <wsdl:output name="getTroubleTicketPrivateDataResponse">
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:output>
+           <wsdl:fault name="getTroubleTicketPrivateDataException">
+               <soap:fault name="getTroubleTicketPrivateDataException" use="literal" />
+           </wsdl:fault>
+        </wsdl:operation>   
+                   
+        <wsdl:operation name="getTroubleTicketPublicData">
+           <soap:operation soapAction="getTroubleTicketPublicData" style="document" />
+           <wsdl:input name="getTroubleTicketPublicDataRequest">
+               <soap:header message="ws-JVTTroubleTicketSession:TroubleTicketHeaderRequest" part="parameters" use="literal"/>
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:input>
+           <wsdl:output name="getTroubleTicketPublicDataResponse">
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:output>
+           <wsdl:fault name="getTroubleTicketPublicDataException">
+               <soap:fault name="getTroubleTicketPublicDataException" use="literal" />
+           </wsdl:fault>
+        </wsdl:operation> 
+
+       <!-- Common API 1.5 : Bindings for JVTSession -->
+        <wsdl:operation name="getSupportedOptionalOperations">
+           <soap:operation soapAction="getSupportedOptionalOperations" style="document" />
+           <wsdl:input name="getSupportedOptionalOperationsRequest">
+               <soap:header message="ws-JVTTroubleTicketSession:TroubleTicketHeaderRequest" part="parameters" use="literal"/>
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:input>
+           <wsdl:output name="getSupportedOptionalOperationsResponse">
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:output>
+           <wsdl:fault name="getSupportedOptionalOperationsException">
+               <soap:fault name="getSupportedOptionalOperationsException" use="literal" />
+           </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getManagedEntityTypes">
+           <soap:operation soapAction="getManagedEntityTypes" style="document" />
+           <wsdl:input name="getManagedEntityTypesRequest">
+               <soap:header message="ws-JVTTroubleTicketSession:TroubleTicketHeaderRequest" part="parameters" use="literal"/>
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:input>
+           <wsdl:output name="getManagedEntityTypesResponse">
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:output>
+           <wsdl:fault name="getManagedEntityTypesException">
+               <soap:fault name="getManagedEntityTypesException" use="literal" />
+           </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getEventTypes">
+           <soap:operation soapAction="getEventTypes" style="document" />
+           <wsdl:input name="getEventTypesRequest">
+               <soap:header message="ws-JVTTroubleTicketSession:TroubleTicketHeaderRequest" part="parameters" use="literal"/>
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:input>
+           <wsdl:output name="getEventTypesResponse">
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:output>
+           <wsdl:fault name="getEventTypesException">
+               <soap:fault name="getEventTypesException" use="literal" />
+           </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getEventDescriptor">
+           <soap:operation soapAction="getEventDescriptor" style="document" />
+           <wsdl:input name="getEventDescriptorRequest">
+               <soap:header message="ws-JVTTroubleTicketSession:TroubleTicketHeaderRequest" part="parameters" use="literal"/>
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:input>
+           <wsdl:output name="getEventDescriptorResponse">
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:output>
+           <wsdl:fault name="getEventDescriptorException">
+               <soap:fault name="getEventDescriptorException" use="literal" />
+           </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getUpdateProcedureTypes">
+           <soap:operation soapAction="getUpdateProcedureTypes" style="document" />
+           <wsdl:input name="getUpdateProcedureTypesRequest">
+               <soap:header message="ws-JVTTroubleTicketSession:TroubleTicketHeaderRequest" part="parameters" use="literal"/>
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:input>
+           <wsdl:output name="getUpdateProcedureTypesResponse">
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:output>
+           <wsdl:fault name="getUpdateProcedureTypesException">
+               <soap:fault name="getUpdateProcedureTypesException" use="literal" />
+           </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getNamedQueryTypes">
+           <soap:operation soapAction="getNamedQueryTypes" style="document" />
+           <wsdl:input name="getNamedQueryTypesRequest">
+               <soap:header message="ws-JVTTroubleTicketSession:TroubleTicketHeaderRequest" part="parameters" use="literal"/>
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:input>
+           <wsdl:output name="getNamedQueryTypesResponse">
+               <soap:body parts="parameters" use="literal" />
+           </wsdl:output>
+           <wsdl:fault name="getNamedQueryTypesException">
+               <soap:fault name="getNamedQueryTypesException" use="literal" />
+           </wsdl:fault>
+        </wsdl:operation>
+       
+		<wsdl:operation name="getTroubleTicketItemTypes">
+            <soap:operation soapAction="getTroubleTicketItemTypes" style="document" /> 
+            <wsdl:input>
+                <soap:header message="ws-JVTTroubleTicketSession:TroubleTicketHeaderRequest" part="parameters" use="literal"/>
+                <soap:body parts="parameters" use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal" />
+            </wsdl:output>
+            <wsdl:fault name ="getTroubleTicketItemTypesException"> 
+                <soap:fault name ="getTroubleTicketItemTypesException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+		<wsdl:operation name="getTroubleTicketTypes">
+            <soap:operation soapAction="getTroubleTicketTypes" style="document" /> 
+            <wsdl:input>
+                <soap:header message="ws-JVTTroubleTicketSession:TroubleTicketHeaderRequest" part="parameters" use="literal"/>
+                <soap:body parts="parameters" use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal" />
+            </wsdl:output>
+            <wsdl:fault name ="getTroubleTicketTypesException"> 
+                <soap:fault name ="getTroubleTicketTypesException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+    </wsdl:binding>
+    
+    <wsdl:service name="FTTHMUTWebService">
+        <wsdl:port name="JVTTroubleTicketSessionWSPort"
+            binding="ws-JVTTroubleTicketSession:JVTTroubleTicketSessionSoapBinding">
+            <soap:address location="http://interop-fibre.fr/SAV/3.0/" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

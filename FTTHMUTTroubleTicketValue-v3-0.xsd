@@ -1,0 +1,430 @@
+<!--
+###################################################################################
+    Filename:	FTTHMUTTTroubleTicketValue_v1-2.xsd
+    Date:	27 Mai 2014
+    Notes:	XML SCHEMA  - Mutualisation FTTH Web Service 1.2              
+###################################################################################
+-->
+<xsd:schema
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="http://interop-fibre.fr/xml/TroubleTicketValue/v3-0"
+	targetNamespace="http://interop-fibre.fr/xml/TroubleTicketValue/v3-0" elementFormDefault="qualified"
+>
+
+		<xsd:simpleType name="serviceProviderID">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="9"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="serviceProviderName">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="40"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="serviceProviderUnit">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="40"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="serviceProviderPhoneNumber">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="25"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="supplierID">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="9"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="supplierName">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="40"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="supplierUnit">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="40"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="supplierPhoneNumber">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="25"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="troubleTicketType">
+				<xsd:restriction base="xsd:integer">
+					<xsd:enumeration value="1"/>
+					<xsd:enumeration value="2"/>
+					<xsd:enumeration value="3"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="offerId">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="50"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="commercialId">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="50"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="technicalId">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="50"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="PRDMId">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="20"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="PMTechnicalId">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="50"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="serviceProviderTroubleTicketKey">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="30"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="customerLastName">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="30"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="customerFirstName">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="30"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="appointmentMode">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="25"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="contactPhoneNumber1">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="25"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="contactPhoneNumber2">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="25"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="customerAccessibilityHours">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="50"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="appointmentMode">
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="AUTO"/>
+					<xsd:enumeration value="MANUEL"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="SUAppointmentManagementId">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="10"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="defectClassId">
+				<xsd:restriction base="xsd:integer">
+					<xsd:enumeration value="1"/>
+					<xsd:enumeration value="2"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="defectDescription">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="30"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="defectPrelocalization">
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="PTO"/>
+					<xsd:enumeration value="RACCO PALIER"/>
+					<xsd:enumeration value="PBO"/>
+					<xsd:enumeration value="PM-PBO"/>
+					<xsd:enumeration value="PM"/>
+					<xsd:enumeration value="PRDM"/>
+					<xsd:enumeration value="PM-PRDM"/>
+					<xsd:enumeration value="BRAM"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="messageType">
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="DEMANDE"/>
+					<xsd:enumeration value="REPONSE"/>
+					<xsd:enumeration value="INFO"/>
+					<xsd:enumeration value="AVANCEMENT INTERVENTION"/>
+					<xsd:enumeration value="DEMANDE RDV"/>
+					<xsd:enumeration value="REPONSE RDV"/>
+					<xsd:enumeration value="PROPOSITION DE RDV"/>
+					<xsd:enumeration value="ESCALADE"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="messageContent">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="1024"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="supplierResolutionAction">
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="INTERVENTION SANS RDV"/>
+					<xsd:enumeration value="INTERVENTION AVEC RDV"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="supplierResolutionState">
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="ACTION A DEFINIR"/>
+					<xsd:enumeration value="ACTION PREVUE"/>
+					<xsd:enumeration value="ACTION PLANIFIEE"/>
+					<xsd:enumeration value="NOUVELLE ACTION A PREVOIR"/>
+					<xsd:enumeration value="ACTION ANNULEE"/>
+					<xsd:enumeration value="ACTION TERMINEE"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="troubleTicketClosureCode">
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="ERR01"/>
+					<xsd:enumeration value="ERR03"/>
+					<xsd:enumeration value="ERR04"/>
+					<xsd:enumeration value="ERR05"/>
+					<xsd:enumeration value="ERR06"/>
+					<xsd:enumeration value="ERR07"/>
+					<xsd:enumeration value="ERR08"/>
+					<xsd:enumeration value="RET01"/>
+					<xsd:enumeration value="RET02"/>
+					<xsd:enumeration value="RET03"/>
+					<xsd:enumeration value="RET04"/>
+					<xsd:enumeration value="RET05"/>
+					<xsd:enumeration value="RET06"/>
+					<xsd:enumeration value="STT01"/>
+					<xsd:enumeration value="STT02"/>
+					<xsd:enumeration value="STT03"/>
+					<xsd:enumeration value="ABS01"/>
+					<xsd:enumeration value="ABS02"/>
+					<xsd:enumeration value="EXC01"/>
+					<xsd:enumeration value="EXC02"/>
+					<xsd:enumeration value="EXC03"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="troubleTicketClosureLabel">
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="ERR01#SIG NON PRISE EN COMPTE : LE PRODUIT N EST PAS DANS VOTRE PARC"/>
+					<xsd:enumeration value="ERR03#INFORMATIONS INCOMPLETES"/>
+					<xsd:enumeration value="ERR04#SIG NON PRISE EN COMPTE : AUTRE SIG EN COURS DE TRAITEMENT"/>
+					<xsd:enumeration value="ERR05#CLOTURE DU TICKET DE MAINTENANCE PROGRAMMEE"/>
+					<xsd:enumeration value="ERR06#LA DEMANDE DE RENSEIGNEMENT EST RESTEE SANS SUITE : TICKET CLOS"/>
+					<xsd:enumeration value="ERR07#INCIDENT ABANDONNE SUR DEMANDE DE L OC (ETAT QUEUED)"/>
+					<xsd:enumeration value="ERR08#UNE RESILIATION A ETE REÇUE"/>
+					<xsd:enumeration value="RET01#DEFAUT CONFIRME ET CORRIGE PAR OI"/>
+					<xsd:enumeration value="RET02#PRELOC ERRONEE, DEFAUT CORRIGE PAR OI"/>
+					<xsd:enumeration value="RET03#CLOTURE DU TICKET D INCIDENT GENERALISE (DERANGEMENT COLLECTIF)"/>
+					<xsd:enumeration value="RET04#DEFAUT CAUSE PAR UN TIERS IDENTIFIE"/>
+					<xsd:enumeration value="RET05#DEFAUT LIE A DES CAUSES EXCEPTIONNELLES (INTEMPERIES)"/>
+					<xsd:enumeration value="RET06#DEFAUT LIE A UN VANDALISME"/>
+					<xsd:enumeration value="STT01#PAS DE DEFAUT CONSTATE SUR LA PARTIE DE L OI"/>
+					<xsd:enumeration value="STT02#INCIDENT ABANDONNE SUR VOTRE DEMANDE (ETAT OPEN ACTIVE - INTERVENTION LANCEE)"/>
+					<xsd:enumeration value="STT03#DEFAUT DETECTE RESPONSABILITE OC"/>
+					<xsd:enumeration value="ABS01#CLIENT ABSENT, NECESSITE D INTERVENIR CHEZ LUI, PAS DE RDV PLANIFIE"/>
+					<xsd:enumeration value="ABS02#CLIENT ABSENT LORS DU RDV"/>
+					<xsd:enumeration value="EXC01#DESACCORD TERRAIN SUITE EXPERTISE CONJOINTE"/>
+					<xsd:enumeration value="EXC02#TECHNICIEN OC ABSENT"/>
+					<xsd:enumeration value="EXC03#TECHNICIEN OI ABSENT"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="defectLocalization">
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="PTO"/>
+					<xsd:enumeration value="RACCO PALIER"/>
+					<xsd:enumeration value="PBO"/>
+					<xsd:enumeration value="PM-PBO"/>
+					<xsd:enumeration value="PM"/>
+					<xsd:enumeration value="PRDM"/>
+					<xsd:enumeration value="PM-PRDM"/>
+					<xsd:enumeration value="BRAM"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="defectResponsibility">
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="OI"/>
+					<xsd:enumeration value="OC"/>
+					<xsd:enumeration value="TIERS"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="reprovisionningId">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="30"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="troubleTicketClosureComment">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="1024"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="ListImpactCommercialId">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="1024"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="ListImpactTechnicalId">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="1024"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="GRTDelay">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="10"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="GRTSignalingRangeDay">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="10"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="GRTRecoveryRange">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="20"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="GRTSignalingRangeHour">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="10"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="LinkLengthPMPRDM">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="5"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="DelivryPointPRDM">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="70"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="DelivryPointPM">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="70"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="CriticalLevel">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="30"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="OfferLinkValue">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="30"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="OfferOptionalId">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="30"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="OLTranking">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="0"/>
+					<xsd:maxLength value="30"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		<xsd:complexType name="FTTHMUTTroubleTicket">
+			<xsd:sequence>
+				<xsd:element name="serviceProviderID" type="tns:serviceProviderID" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="serviceProviderName" type="tns:serviceProviderName" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="serviceProviderUnit" type="tns:serviceProviderUnit" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="serviceProviderPhoneNumber" type="tns:serviceProviderPhoneNumber" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="supplierID" type="tns:supplierID" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="supplierName" type="tns:supplierName" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="supplierUnit" type="tns:supplierUnit" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="supplierPhoneNumber" type="tns:supplierPhoneNumber" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="troubleTicketType" type="tns:troubleTicketType" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="offerId" type="tns:offerId" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="commercialId" type="tns:commercialId" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="technicalId" type="tns:technicalId" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="PRDMId" type="tns:PRDMId" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="PMTechnicalId" type="tns:PMTechnicalId" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="serviceProviderTroubleTicketKey" type="tns:serviceProviderTroubleTicketKey" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="customerLastName" type="tns:customerLastName" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="customerFirstName" type="tns:customerFirstName" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="contactPhoneNumber1" type="tns:contactPhoneNumber1" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="contactPhoneNumber2" type="tns:contactPhoneNumber2" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="customerAccessibilityHours" type="tns:customerAccessibilityHours" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="appointmentMode" type="tns:appointmentMode" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="SUAppointmentManagementId" type="tns:SUAppointmentManagementId" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="appointmentSuggestion1" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="appointmentSuggestion2" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="appointmentSuggestion3" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="defectClassId" type="tns:defectClassId" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="defectDescription" type="tns:defectDescription" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="defectPrelocalization" type="tns:defectPrelocalization" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="alreadyOperated" type="xsd:boolean" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="messageType" type="tns:messageType" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="messageContent" type="tns:messageContent" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="supplierPlannedActionDate" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="supplierResolutionAction" type="tns:supplierResolutionAction" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="supplierResolutionState" type="tns:supplierResolutionState" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="troubleTicketClosureCode" type="tns:troubleTicketClosureCode" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="troubleTicketClosureLabel" type="tns:troubleTicketClosureLabel" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="defectLocalization" type="tns:defectLocalization" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="defectResponsibility" type="tns:defectResponsibility" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="reprovisionningId" type="tns:reprovisionningId" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="troubleTicketClosureComment" type="tns:troubleTicketClosureComment" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="closureDuration" type="xsd:duration" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="ListImpactCommercialId" type="tns:ListImpactCommercialId" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="ListImpactTechnicalId" type="tns:ListImpactTechnicalId" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="GRTDelay" type="tns:GRTDelay" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="GRTSignalingRangeDay" type="tns:GRTSignalingRangeDay" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="GRTRecoveryRange" type="tns:GRTRecoveryRange" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="GRTSignalingRangeHour" type="tns:GRTSignalingRangeHour" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="LinkLengthPMPRDM" type="tns:LinkLengthPMPRDM" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="DelivryPointPRDM" type="tns:DelivryPointPRDM" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="DelivryPointPM" type="tns:DelivryPointPM" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="CriticalLevel" type="tns:CriticalLevel" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="OfferLinkValue" type="tns:OfferLinkValue" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="OfferOptionalId" type="tns:OfferOptionalId" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="OLTranking" type="tns:OLTranking" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="ActivatedCustomertechnicalId" type="xsd:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+</xsd:schema>

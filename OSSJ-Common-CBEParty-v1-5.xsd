@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ *
+ *
+ *  Generated with Tigerstripe(tm) Tigerstripe Workbench Feature 2.2.0.v20070514-1108-IXOqsosF8y087t5
+ *
+ *  Tigerstripe(tm) is a registered trademark of Tigerstripe, Inc.
+ *
+ *  Plugin  : Tigerstripe, Inc., OSS through Java(TM) Initiative/XMLSpecificationPlugin(0.6) 
+ *
+ *  Template templates\packageBased\packageBasedSchema.vm
+ *    
+ *  DO NOT EDIT THIS CODE WAS AUTOMATICALLY GENERATED
+ *
+Copyright 2002-2007 The Members of the OSS through Java(TM) Initiative.
+All rights reserved. Use is subject to license terms.
+ *
+-->
+<!--
+DOCUMENTATION IS PROVIDED "AS IS" AND ALL EXPRESS OR IMPLIED
+CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED
+WARRANTY OF MERCHANTABILITY, FITNESS FOR FOR A PARTICULAR PURPOSE OR
+NON-INFRINGEMENT, ARE DISCLAIMED, EXCEPT TO THE EXTENT THAT SUCH
+DISCLAIMERS ARE HELD TO BE LEGALLY INVALID.
+-->
+<schema targetNamespace="http://ossj.org/xml/Common-CBEParty/v1-5" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:co-v1-5="http://ossj.org/xml/Common/v1-5" xmlns:cbeparty-v1-5="http://ossj.org/xml/Common-CBEParty/v1-5" xmlns:cbecore-v1-5="http://ossj.org/xml/Common-CBECore/v1-5" xmlns:cbedatatypes-v1-5="http://ossj.org/xml/Common-CBEDatatypes/v1-5" version="v1-5" elementFormDefault="qualified">
+
+    <!-- Imports -->
+
+    <import namespace="http://ossj.org/xml/Common/v1-5" schemaLocation="OSSJ-Common-v1-5.xsd"/>
+    <import namespace="http://ossj.org/xml/Common-CBECore/v1-5" schemaLocation="OSSJ-Common-CBECore-v1-5.xsd"/>
+    <import namespace="http://ossj.org/xml/Common-CBEDatatypes/v1-5" schemaLocation="OSSJ-Common-CBEDatatypes-v1-5.xsd"/>
+    <!-- Tigerstripe : Entity definitions for PartyRole  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="PartyRoleValue">
+        <annotation>
+            <documentation>
+A Common Managed Entity interface defining a Party Role. The part played by a Party in a given context with any characteristics, such as expected pattern of behavior, attributes, and or associations that it entails. The PartyRole represents the various roles a Party could play with regard to various managed entities. This interface may be extended in order to derive specific party roles (e.g. customer, etc.).
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityValue">    
+                <sequence>
+                    <element name="partyKey" type="cbeparty-v1-5:PartyKey" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="validFor" type="cbedatatypes-v1-5:TimePeriod" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element ref="cbeparty-v1-5:baseState_PartyRole" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfPartyRoleValue">
+        <sequence>
+            <element name="item" type="cbeparty-v1-5:PartyRoleValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="PartyRoleKey">
+        <annotation>
+            <documentation>
+                This PartyRoleKey encapsulates all the information that is necessary to 
+                identify a particular instance of a PartyRoleValue. The type of the 
+                primary key for this PartyRoleKey definition is: anyType 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfPartyRoleKey">
+        <sequence>
+            <element name="item" type="cbeparty-v1-5:PartyRoleKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="PartyRoleKeyResult">
+        <annotation>
+            <documentation>
+                The PartyRoleKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a PartyRoleValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityKeyResult">
+                <sequence>
+                     <element name="partyRoleKey" type="cbeparty-v1-5:PartyRoleKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfPartyRoleKeyResult">
+        <sequence>
+            <element name="item" type="cbeparty-v1-5:PartyRoleKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of PartyRole -->
+    <element name="baseState_PartyRole" type="string" abstract="true"/>
+     
+    <element name="state_PartyRole" type="cbedatatypes-v1-5:LifeCycleState" substitutionGroup="cbeparty-v1-5:baseState_PartyRole"/> 
+
+    <element name="state_PartyRoleState" type="cbedatatypes-v1-5:State" substitutionGroup="cbeparty-v1-5:baseState_PartyRole"/>
+
+    <!-- Tigerstripe : End of Entity definition for PartyRole -->
+    <!-- Tigerstripe : Entity definitions for Party  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="PartyValue">
+        <annotation>
+            <documentation>
+A Common Business Entity interface defining a Party Managed Entity Value. A Party represents an individual or an organzation. Party is an abstract concept that should be used in places where the business says something can be an organization, organization unit or an individual. The PartyRole represents the various roles a party could play with regard to various managed entities. Each Party is associated to a set of party role instances.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityValue">    
+                <sequence>
+                    <element name="validFor" type="cbedatatypes-v1-5:TimePeriod" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="individualPartyNames" type="cbeparty-v1-5:ArrayOfIndividualName" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="organizationPartyNames" type="cbeparty-v1-5:ArrayOfOrganizationName" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfPartyValue">
+        <sequence>
+            <element name="item" type="cbeparty-v1-5:PartyValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="PartyKey">
+        <annotation>
+            <documentation>
+                This PartyKey encapsulates all the information that is necessary to 
+                identify a particular instance of a PartyValue. The type of the 
+                primary key for this PartyKey definition is: anyType 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfPartyKey">
+        <sequence>
+            <element name="item" type="cbeparty-v1-5:PartyKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="PartyKeyResult">
+        <annotation>
+            <documentation>
+                The PartyKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a PartyValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityKeyResult">
+                <sequence>
+                     <element name="partyKey" type="cbeparty-v1-5:PartyKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfPartyKeyResult">
+        <sequence>
+            <element name="item" type="cbeparty-v1-5:PartyKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of Party -->
+    <!-- Tigerstripe : End of Entity definition for Party -->
+    <!-- Tigerstripe : Entity definitions for ServiceProvider  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="ServiceProviderValue">
+        <annotation>
+            <documentation>
+Entity providing services.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbeparty-v1-5:PartyRoleValue">    
+                <sequence>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfServiceProviderValue">
+        <sequence>
+            <element name="item" type="cbeparty-v1-5:ServiceProviderValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="ServiceProviderKey">
+        <annotation>
+            <documentation>
+                This ServiceProviderKey encapsulates all the information that is necessary to 
+                identify a particular instance of a ServiceProviderValue. The type of the 
+                primary key for this ServiceProviderKey definition is: string 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbeparty-v1-5:PartyRoleKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfServiceProviderKey">
+        <sequence>
+            <element name="item" type="cbeparty-v1-5:ServiceProviderKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="ServiceProviderKeyResult">
+        <annotation>
+            <documentation>
+                The ServiceProviderKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a ServiceProviderValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbeparty-v1-5:PartyRoleKeyResult">
+                <sequence>
+                     <element name="serviceProviderKey" type="cbeparty-v1-5:ServiceProviderKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfServiceProviderKeyResult">
+        <sequence>
+            <element name="item" type="cbeparty-v1-5:ServiceProviderKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of ServiceProvider -->
+    <!-- Tigerstripe : End of Entity definition for ServiceProvider -->
+    <!-- Tigerstripe : Datatype definitions for IndividualName  (basic, ArrayOf) -->
+    <complexType name="IndividualName">
+        <annotation>
+            <documentation>
+This interface defines the IndividualName type. A word, term, or phrase by which an individual is known and distinguished from other individuals. A name is an informal way of identifying an object. This entity allows for international naming variations.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="formOfAddress" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="givenName" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="preferredGivenName" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="middleName" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="familyNamePrefix" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="familyName" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="familyGeneration" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    
+                    <element name="aristocraticTitle" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>                    
+                    <element name="formattedName" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="generation" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>                    
+                    <element name="legalName" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>                    
+                    <element name="qualifications" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfIndividualName">
+        <sequence>
+            <element name="item" type="cbeparty-v1-5:IndividualName" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of IndividualName -->
+    <!-- Tigerstripe : End of Datatype definition for IndividualName -->
+    <!-- Tigerstripe : Datatype definitions for OrganizationName  (basic, ArrayOf) -->
+    <complexType name="OrganizationName">
+        <annotation>
+            <documentation>
+This interface defines the OrganizationName type. A word, term, or phrase by which an organization is known and distinguished from other organizations. A name is an informal way of identifying an object.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="tradingName" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfOrganizationName">
+        <sequence>
+            <element name="item" type="cbeparty-v1-5:OrganizationName" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of OrganizationName -->
+    <!-- Tigerstripe : End of Datatype definition for OrganizationName -->
+
+
+
+
+
+
+</schema>
