@@ -11,18 +11,6 @@
 	xmlns:tns="http://interop-fibre.fr/xml/TroubleTicketValue/v3-0"
 	targetNamespace="http://interop-fibre.fr/xml/TroubleTicketValue/v3-0" elementFormDefault="qualified"
 >
-		<xsd:simpleType name="description">
-			<xsd:restriction name="xsd:string">
-				<xsd:enumeration value="CASE CREATE REQUEST"/>
-				<xsd:enumeration value="CASE SOLVING NOTIFICATION"/>
-				<xsd:enumeration value="CASE SOLVED NOTIFICATION"/>
-				<xsd:enumeration value="CASE CANCELATION REQUEST"/>
-				<xsd:enumeration value="CASE CANCELATION AGREEMENT"/>
-				<xsd:enumeration value="CASE CANCELATION"/>
-				<xsd:enumeration value="SP CASE INFORMATION NOTIFICATION"/>
-				<xsd:enumeration value="SU CASE INFORMATION NOTIFICATION"/>
-			</xsd:restriction>
-		</xsd:simpleType>
 		<xsd:simpleType name="serviceProviderID">
 			<xsd:restriction base="xsd:string">
 				<xsd:minLength value="9"/>
@@ -375,7 +363,6 @@
 		</xsd:simpleType>
 		<xsd:complexType name="FTTHMUTTroubleTicket">
 			<xsd:sequence>
-				<xsd:element name="description" type="tns:description" minOccurs="1" maxOccurs="1"/>
 				<xsd:element name="serviceProviderID" type="tns:serviceProviderID" nillable="true" minOccurs="0" maxOccurs="1"/>
 				<xsd:element name="serviceProviderName" type="tns:serviceProviderName" nillable="true" minOccurs="0" maxOccurs="1"/>
 				<xsd:element name="serviceProviderUnit" type="tns:serviceProviderUnit" nillable="true" minOccurs="0" maxOccurs="1"/>
