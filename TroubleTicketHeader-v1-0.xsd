@@ -1,0 +1,19 @@
+<!--
+################################################################
+    Filename:	troubleticketheader.xsd
+	Date:		Mar 524th, 2011
+      Notes:	XML SCHEMA  tt web service                  
+################################################################
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:header="http://interop-fibre.fr/xml/TroubleTicketHeader/v1-0" targetNamespace="http://interop-fibre.fr/xml/TroubleTicketHeader/v1-0" elementFormDefault="qualified">
+	
+	<xsd:element name="TroubleTicketHeaderRequest" type="header:TroubleTicketHeader"/>
+	<xsd:element name="TroubleTicketHeaderResponse" type="header:TroubleTicketHeader"/>
+	<xsd:complexType name="TroubleTicketHeader">
+		<xsd:sequence>
+			<xsd:element name="LoginName" type="xsd:string" nillable="false"/>
+			<xsd:element name="Password" type="xsd:string" nillable="false"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+</xsd:schema>

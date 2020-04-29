@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ *
+ *
+ *  Generated with Tigerstripe(tm) Tigerstripe Workbench Feature 2.2.0.v20070416-0736-GFEkmUll1E-mVWE
+ *
+ *  Tigerstripe(tm) is a registered trademark of Tigerstripe, Inc.
+ *
+ *  Plugin  : Tigerstripe, Inc., OSS through Java(TM) Initiative/XMLSpecificationPlugin(0.6) 
+ *
+ *  Template templates\packageBased\packageBasedSchema.vm
+ *    
+ *  DO NOT EDIT THIS CODE WAS AUTOMATICALLY GENERATED
+ *
+Copyright 2002-2007 The Members of the OSS through Java(TM) Initiative.
+All rights reserved. Use is subject to license terms.
+ *
+-->
+<!--
+DOCUMENTATION IS PROVIDED "AS IS" AND ALL EXPRESS OR IMPLIED
+CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED
+WARRANTY OF MERCHANTABILITY, FITNESS FOR FOR A PARTICULAR PURPOSE OR
+NON-INFRINGEMENT, ARE DISCLAIMED, EXCEPT TO THE EXTENT THAT SUCH
+DISCLAIMERS ARE HELD TO BE LEGALLY INVALID.
+-->
+<schema targetNamespace="http://ossj.org/xml/TroubleTicket/v1-2" 
+		xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:co-v1-5="http://ossj.org/xml/Common/v1-5" 
+		xmlns:tt-v1-2="http://ossj.org/xml/TroubleTicket/v1-2"
+		xmlns:cbebi-v1-5="http://ossj.org/xml/Common-CBEBi/v1-5" 
+		xmlns:cbecore-v1-5="http://ossj.org/xml/Common-CBECore/v1-5" 
+		xmlns:cbetrouble-v1-2="http://ossj.org/xml/TroubleTicket-CBETrouble/v1-2" version="v1-2" elementFormDefault="qualified">
+
+    <!-- Imports --> 
+
+    <import namespace="http://ossj.org/xml/Common/v1-5" schemaLocation="OSSJ-Common-v1-5.xsd"/>
+    <import namespace="http://ossj.org/xml/Common-CBEBi/v1-5" schemaLocation="OSSJ-Common-CBEBi-v1-5.xsd"/>
+    <import namespace="http://ossj.org/xml/Common-CBECore/v1-5" schemaLocation="OSSJ-Common-CBECore-v1-5.xsd"/>
+    <import namespace="http://ossj.org/xml/TroubleTicket-CBETrouble/v1-2" schemaLocation="OSSJ-TroubleTicket-CBETrouble-v1-2.xsd"/>
+
+        <!-- Tigerstripe : Exception definition for CloseException  -->
+    <complexType name="CloseException">
+        <annotation>
+            <documentation>
+CloseException Class
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="co-v1-5:BaseException">
+                <sequence>
+                </sequence>
+             </extension>
+        </complexContent>
+    </complexType>
+    <!-- Tigerstripe : End of Exception definition for CloseException  -->
+    <!-- Tigerstripe : Exception definition for CancelException  -->
+    <complexType name="CancelException">
+        <annotation>
+            <documentation>
+CancelException Class
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="co-v1-5:BaseException">
+                <sequence>
+                </sequence>
+             </extension>
+        </complexContent>
+    </complexType>
+    
+    <!-- Tigerstripe : Event definitions for TroubleTicketCloseOutEvent  -->
+    <element name="TroubleTicketCloseOutEvent">
+        <annotation>
+            <documentation>
+Event that is sent when a Trouble Ticket has been closed. 
+ This includes state change by a close operation or an update as well as changes during the execution of a TroubleTicket by implementation. 
+ The event contains the TroubleTicketKey which identifies the TroubleTicket, the new state after closure and optionally the old state before. 
+
+            </documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+                <element name="event" type="tt-v1-2:TroubleTicketCloseOutEventType"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="TroubleTicketCloseOutEventType">
+        <complexContent>
+            <extension base="tt-v1-2:TroubleTicketStateChangeEventType">    
+                <sequence>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of TroubleTicketCloseOutEvent -->
+    <!-- Tigerstripe : End of Event definitions for TroubleTicketCloseOutEvent  -->
+    <!-- Tigerstripe : Event definitions for TroubleTicketCreateEvent  -->
+    <element name="TroubleTicketCreateEvent">
+        <annotation>
+            <documentation>
+Event that is sent when a new Trouble Ticket has been created. 
+ The TroubleTicketValue must contain all attributes from the created ticket. 
+ The TroubleTicketValue must contain the TroubleTicketKey which identifies the TroubleTicket. 
+
+            </documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+                <element name="event" type="tt-v1-2:TroubleTicketCreateEventType"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="TroubleTicketCreateEventType">
+        <complexContent>
+            <extension base="co-v1-5:BaseEventType">    
+                <sequence>
+                    <element name="troubleTicketValue" type="cbetrouble-v1-2:TroubleTicketValue" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of TroubleTicketCreateEvent -->
+    <!-- Tigerstripe : End of Event definitions for TroubleTicketCreateEvent  -->
+    <!-- Tigerstripe : Event definitions for TroubleTicketItemAttributeValueChangeEvent  -->
+    <element name="TroubleTicketItemAttributeValueChangeEvent">
+        <annotation>
+            <documentation>
+Trouble Ticket Item Attribute Value Change Event. 
+ Event that is sent when the attribute values of a Trouble Ticket Item have changed. 
+ The same event may contain multiple attribute changes. 
+ The 'newTroubleTicketItemValue' attribute contains the TroubleTicketItemValue which contains the changed attribute values. Only the changed attribute need to be populated in the TroubleTicketItemValue.
+ 
+ The 'oldTroubleTicketItemValue' attribute holds the TroubleTicketItemValue which contains the old attribute values. This attribute is optional and may be supported by an implementor. 
+
+            </documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+                <element name="event" type="tt-v1-2:TroubleTicketItemAttributeValueChangeEventType"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="TroubleTicketItemAttributeValueChangeEventType">
+        <complexContent>
+            <extension base="co-v1-5:BaseEventType">    
+                <sequence>
+                    <element name="newTroubleTicketItemValue" type="cbetrouble-v1-2:TroubleTicketItemValue" minOccurs="0"/>
+                    <element name="oldTroubleTicketItemValue" type="cbetrouble-v1-2:TroubleTicketItemValue" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of TroubleTicketItemAttributeValueChangeEvent -->
+    <!-- Tigerstripe : End of Event definitions for TroubleTicketItemAttributeValueChangeEvent  -->
+    <!-- Tigerstripe : Event definitions for TroubleTicketAttributeValueChangeEvent  -->
+    <element name="TroubleTicketAttributeValueChangeEvent">
+        <annotation>
+            <documentation>
+Trouble Ticket Attribute Value Change Event. 
+ Event that is sent when the attribute values of a Trouble Ticket have changed. 
+ This includes update, closure or cancellation of an TroubleTicket as well as changes during the execution of a TroubleTicket by implementation. 
+ The same event may contain multiple attribute changes. 
+ Only the attributes that changed need to be populated in the Trouble Ticket Value. 
+ State changes are handled by this notification. 
+
+            </documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+                <element name="event" type="tt-v1-2:TroubleTicketAttributeValueChangeEventType"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="TroubleTicketAttributeValueChangeEventType">
+        <complexContent>
+            <extension base="co-v1-5:BaseEventType">    
+                <sequence>
+                    <element name="newTroubleTicketValue" type="cbetrouble-v1-2:TroubleTicketValue" minOccurs="0"/>
+                    <element name="oldTroubleTicketValue" type="cbetrouble-v1-2:TroubleTicketValue" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of TroubleTicketAttributeValueChangeEvent -->
+    <!-- Tigerstripe : End of Event definitions for TroubleTicketAttributeValueChangeEvent  -->
+    <!-- Tigerstripe : Event definitions for TroubleTicketItemRemoveEvent  -->
+    <element name="TroubleTicketItemRemoveEvent">
+        <annotation>
+            <documentation>
+Event that is sent when a trouble ticket item has been removed. 
+ The TroubleTicketItemValue must contain all attributes from the item before deletion. 
+
+            </documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+                <element name="event" type="tt-v1-2:TroubleTicketItemRemoveEventType"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="TroubleTicketItemRemoveEventType">
+        <complexContent>
+            <extension base="co-v1-5:BaseEventType">    
+                <sequence>
+                    <element name="troubleTicketItemValue" type="cbetrouble-v1-2:TroubleTicketItemValue" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of TroubleTicketItemRemoveEvent -->
+    <!-- Tigerstripe : End of Event definitions for TroubleTicketItemRemoveEvent  -->
+    <!-- Tigerstripe : Event definitions for TroubleTicketCancellationEvent  -->
+    <element name="TroubleTicketCancellationEvent">
+        <annotation>
+            <documentation>
+Event that is sent when a Trouble Ticket has been cancelled. 
+ This includes state change by a cancel operation or an update, as well as changes during the execution of a TroubleTicket by implementation. 
+ The event contains the TroubleTicketKey which identifies the TroubleTicket, the new state after Cancellation and optionally the old state before. 
+
+            </documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+                <element name="event" type="tt-v1-2:TroubleTicketCancellationEventType"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="TroubleTicketCancellationEventType">
+        <complexContent>
+            <extension base="tt-v1-2:TroubleTicketStateChangeEventType">    
+                <sequence>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of TroubleTicketCancellationEvent -->
+    <!-- Tigerstripe : End of Event definitions for TroubleTicketCancellationEvent  -->
+    <!-- Tigerstripe : Event definitions for TroubleTicketStateChangeEvent  -->
+    <element name="TroubleTicketStateChangeEvent">
+        <annotation>
+            <documentation>
+Trouble Ticket State Change Event emitted when a a Trouble Ticket has changed its state. 
+ This includes state change by a close/cancel operation or an update as well as changes during the execution of a TroubleTicket by implementation. 
+ The attributes present in the event are:  
+- the trouble ticket key 
+- the current state 
+ The attributes which may be present in the event are:  
+- the previous state 
+ 
+
+            </documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+                <element name="event" type="tt-v1-2:TroubleTicketStateChangeEventType"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="TroubleTicketStateChangeEventType">
+        <complexContent>
+            <extension base="co-v1-5:BaseEventType">    
+                <sequence>
+                    <element name="troubleTicketKey" type="cbetrouble-v1-2:TroubleTicketKey" minOccurs="0"/>
+                    <element ref="tt-v1-2:baseNewState_TroubleTicketStateChangeEvent" minOccurs="0"/>
+                    <element ref="tt-v1-2:baseOldState_TroubleTicketStateChangeEvent" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of TroubleTicketStateChangeEvent -->
+    <element name="baseNewState_TroubleTicketStateChangeEvent" type="string" abstract="true"/>
+     
+    <element name="newState_TroubleTicketStateChangeEvent" type="cbetrouble-v1-2:TroubleTicketState" substitutionGroup="tt-v1-2:baseNewState_TroubleTicketStateChangeEvent"/> 
+
+    <element name="baseOldState_TroubleTicketStateChangeEvent" type="string" abstract="true"/>
+     
+    <element name="oldState_TroubleTicketStateChangeEvent" type="cbetrouble-v1-2:TroubleTicketState" substitutionGroup="tt-v1-2:baseOldState_TroubleTicketStateChangeEvent"/> 
+
+    <element name="createTroubleTicketByValueRequest">
+        <annotation>
+            <documentation>
+                This is the Request for the createTroubleTicketByValue Operation
+                This operation is MANDATORY
+            </documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+                <element name="troubleTicketValue" type="cbetrouble-v1-2:TroubleTicketValue"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createTroubleTicketByValueResponse">
+        <annotation>
+            <documentation>
+                This is the Response for the createTroubleTicketByValue Operation. This is customize to use element troubleTicketValue instead of troubleTicketKey 
+            </documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+                <element name="troubleTicketResponse" type="cbetrouble-v1-2:TroubleTicketResponse"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createTroubleTicketByValueException">
+        <annotation>
+            <documentation>
+                This is the Exception for the createTroubleTicketByValue Operation
+                The following exceptions are returned if an error occurs.
+            </documentation>
+        </annotation>
+        <complexType>
+            <choice>
+                <element name="ossIllegalArgumentException" type="co-v1-5:OssIllegalArgumentException"/>
+                <element name="remoteException" type="co-v1-5:RemoteException"/>
+                <element name="duplicateKeyException" type="co-v1-5:DuplicateKeyException"/>
+                <element name="createException" type="co-v1-5:CreateException"/>
+            </choice>
+        </complexType>
+    </element>
+   
+    <element name="getTroubleTicketByKeyRequest">
+        <annotation>
+            <documentation>
+                This is the Request for the getTroubleTicketByKey Operation
+                This operation is MANDATORY
+            </documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+                <element name="troubleTicketKey" type="string"/>
+                <element name="attrNames" type="co-v1-5:ArrayOfString"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getTroubleTicketByKeyResponse">
+        <annotation>
+            <documentation>
+                This is the Response for the getTroubleTicketByKey Operation
+            </documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+				<element name="troubleTicketResponse" type="cbetrouble-v1-2:TroubleTicketResponse"/>
+                <element name="troubleTicketValue" type="cbetrouble-v1-2:TroubleTicketValue"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getTroubleTicketByKeyException">
+        <annotation>
+            <documentation>
+                This is the Exception for the getTroubleTicketByKey Operation
+                The following exceptions are returned if an error occurs.
+            </documentation>
+        </annotation>
+        <complexType>
+            <choice>
+                <element name="ossIllegalArgumentException" type="co-v1-5:OssIllegalArgumentException"/>
+                <element name="remoteException" type="co-v1-5:RemoteException"/>
+                <element name="objectNotFoundException" type="co-v1-5:ObjectNotFoundException"/>
+            </choice>
+        </complexType>
+    </element>
+    
+    <element name="setTroubleTicketByValueRequest">
+        <annotation>
+            <documentation>
+                This is the Request for the setTroubleTicketByValue Operation
+                This operation is MANDATORY
+            </documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+                <element name="troubleTicketValue" type="cbetrouble-v1-2:TroubleTicketValue"/>
+                <element name="resyncRequired" type="boolean"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="setTroubleTicketByValueResponse">
+        <annotation>
+            <documentation>
+                This is the Response for the setTroubleTicketByValue Operation. This is customize to use troubleTicketValue.
+            </documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+				<element name="troubleTicketResponse" type="cbetrouble-v1-2:TroubleTicketResponse"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="setTroubleTicketByValueException">
+        <annotation>
+            <documentation>
+                This is the Exception for the setTroubleTicketByValue Operation
+                The following exceptions are returned if an error occurs.
+            </documentation>
+        </annotation>
+        <complexType>
+            <choice>
+                <element name="ossIllegalArgumentException" type="co-v1-5:OssIllegalArgumentException"/>
+                <element name="remoteException" type="co-v1-5:RemoteException"/>
+                <element name="objectNotFoundException" type="co-v1-5:ObjectNotFoundException"/>
+                <element name="ossSetException" type="co-v1-5:OssSetException"/>
+                <element name="ossResyncRequiredException" type="co-v1-5:OssResyncRequiredException"/>
+            </choice>
+        </complexType>
+    </element>
+    
+  
+   <element name="getTroubleTicketItemTypesRequest">
+        <annotation>
+            <documentation>
+                This is the Request for the getTroubleTicketItemTypes Operation
+            </documentation>
+        </annotation>
+        <complexType>
+                <sequence>
+                </sequence>
+        </complexType>
+    </element>
+    <element name="getTroubleTicketItemTypesResponse">
+        <annotation>
+            <documentation>
+                This is the Response for the getTroubleTicketItemTypes Operation
+            </documentation>
+        </annotation>
+        <complexType>
+                <sequence>
+                    <element name="troubleTicketItemTypes" type="co-v1-5:ArrayOfString"/>
+                </sequence>
+        </complexType>
+    </element>
+    <element name="getTroubleTicketItemTypesException">
+        <annotation>
+            <documentation>
+                This is the Exception for the getTroubleTicketItemTypes Operation
+                The following exceptions are returned if an error occurs.
+            </documentation>
+        </annotation>
+        <complexType>
+            <choice>
+                <element name="remoteException" type="co-v1-5:RemoteException"/>
+            </choice>
+        </complexType>
+    </element>
+       
+      
+  
+   <element name="getTroubleTicketTypesRequest">
+        <annotation>
+            <documentation>
+                This is the Request for the getTroubleTicketTypes Operation
+            </documentation>
+        </annotation>
+        <complexType>
+                <sequence>
+                </sequence>
+        </complexType>
+    </element>
+    <element name="getTroubleTicketTypesResponse">
+        <annotation>
+            <documentation>
+                This is the Response for the getTroubleTicketTypes Operation
+            </documentation>
+        </annotation>
+        <complexType>
+                <sequence>
+                    <element name="troubleTicketTypes" type="co-v1-5:ArrayOfString"/>
+                </sequence>
+        </complexType>
+    </element>
+    <element name="getTroubleTicketTypesException">
+        <annotation>
+            <documentation>
+                This is the Exception for the getTroubleTicketTypes Operation
+                The following exceptions are returned if an error occurs.
+            </documentation>
+        </annotation>
+        <complexType>
+            <choice>
+                <element name="remoteException" type="co-v1-5:RemoteException"/>
+            </choice>
+        </complexType>
+    </element>
+  
+   
+
+
+    <!-- Tigerstripe : End of Operations on the interface JVTTroubleTicketSession =================================== -->
+   <annotation>
+        <documentation>
+            Get the Private data that is specific to BT
+        </documentation>
+    </annotation>
+    <element name="getTroubleTicketPrivateDataRequest">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="getTroubleTicketPrivateDataResponse">
+        <complexType>
+            <sequence>
+                <element name="ttPrivateDataXml" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getTroubleTicketPrivateDataException">
+        <complexType>
+            <choice>
+                <element name="remoteException" type="co-v1-5:RemoteException"/>
+            </choice>
+        </complexType>
+    </element>  
+      
+    <annotation>
+        <documentation>
+            Get the public data that are common to all BT
+        </documentation>
+    </annotation>
+    <element name="getTroubleTicketPublicDataRequest">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="getTroubleTicketPublicDataResponse">
+        <complexType>
+            <sequence>
+                <element name="ttPublicDataXml" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getTroubleTicketPublicDataException">
+        <complexType>
+            <choice>
+                <element name="remoteException" type="co-v1-5:RemoteException"/>
+            </choice>
+        </complexType>
+    </element>         
+
+</schema>

@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ *
+ *
+ *  Generated with Tigerstripe(tm) Tigerstripe Workbench Feature 2.2.0.v20070514-1108-IXOqsosF8y087t5
+ *
+ *  Tigerstripe(tm) is a registered trademark of Tigerstripe, Inc.
+ *
+ *  Plugin  : Tigerstripe, Inc., OSS through Java(TM) Initiative/XMLSpecificationPlugin(0.6) 
+ *
+ *  Template templates\packageBased\packageBasedSchema.vm
+ *    
+ *  DO NOT EDIT THIS CODE WAS AUTOMATICALLY GENERATED
+ *
+Copyright 2002-2007 The Members of the OSS through Java(TM) Initiative.
+All rights reserved. Use is subject to license terms.
+ *
+-->
+<!--
+DOCUMENTATION IS PROVIDED "AS IS" AND ALL EXPRESS OR IMPLIED
+CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED
+WARRANTY OF MERCHANTABILITY, FITNESS FOR FOR A PARTICULAR PURPOSE OR
+NON-INFRINGEMENT, ARE DISCLAIMED, EXCEPT TO THE EXTENT THAT SUCH
+DISCLAIMERS ARE HELD TO BE LEGALLY INVALID.
+-->
+<schema targetNamespace="http://ossj.org/xml/Common-CBEBi/v1-5" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:co-v1-5="http://ossj.org/xml/Common/v1-5" xmlns:cbebi-v1-5="http://ossj.org/xml/Common-CBEBi/v1-5" xmlns:cbecore-v1-5="http://ossj.org/xml/Common-CBECore/v1-5" xmlns:cbedatatypes-v1-5="http://ossj.org/xml/Common-CBEDatatypes/v1-5" xmlns:cbelocation-v1-5="http://ossj.org/xml/Common-CBELocation/v1-5" version="v1-5" elementFormDefault="qualified">
+
+    <!-- Imports -->
+
+    <import namespace="http://ossj.org/xml/Common/v1-5" schemaLocation="OSSJ-Common-v1-5.xsd"/>
+    <import namespace="http://ossj.org/xml/Common-CBECore/v1-5" schemaLocation="OSSJ-Common-CBECore-v1-5.xsd"/>
+    <import namespace="http://ossj.org/xml/Common-CBEDatatypes/v1-5" schemaLocation="OSSJ-Common-CBEDatatypes-v1-5.xsd"/>
+    <import namespace="http://ossj.org/xml/Common-CBELocation/v1-5" schemaLocation="OSSJ-Common-CBELocation-v1-5.xsd"/>
+    <!-- Tigerstripe : Entity definitions for BusinessInteraction  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="BusinessInteractionValue">
+        <annotation>
+            <documentation>
+A BusinessInteraction is an arrangement, contract, communication or joint activity between one or more BusinessParticipants. A BusinessInteraction may consist of one or more BusinessInteractionItems. A BusinessInteractionItem may refer to a Product, Service, Resource, or one of their specifications. A BusinessInteraction is further defined by one or more Places. One BusinessInteraction may reference another BusinessInteraction and one BusinessInteractionItem may reference another BusinessInteractionItem on the same or different BusinessInteraction. There are five types of BusinessInteractions: Requests, Responses, Notifications, Agreements, and Commands.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityValue">    
+                <sequence>
+                    <element name="interactionDate" type="dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="interactionDateComplete" type="dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element ref="cbebi-v1-5:baseInteractionStatus_BusinessInteraction" minOccurs="0"/>
+                    <element name="businessInteractionItemKeys" type="cbebi-v1-5:ArrayOfBusinessInteractionItemKey" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="description" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="references" type="cbebi-v1-5:ArrayOfBusinessInteractionRelationshipKey" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="involvedLocations" type="cbebi-v1-5:ArrayOfBusinessInteractionLocation" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="involvedRoles" type="cbebi-v1-5:ArrayOfBusinessInteractionRoleValue" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionValue">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="BusinessInteractionKey">
+        <annotation>
+            <documentation>
+                This BusinessInteractionKey encapsulates all the information that is necessary to 
+                identify a particular instance of a BusinessInteractionValue. The type of the 
+                primary key for this BusinessInteractionKey definition is: anyType 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionKey">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="BusinessInteractionKeyResult">
+        <annotation>
+            <documentation>
+                The BusinessInteractionKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a BusinessInteractionValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityKeyResult">
+                <sequence>
+                     <element name="businessInteractionKey" type="cbebi-v1-5:BusinessInteractionKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionKeyResult">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of BusinessInteraction -->
+    <element name="baseInteractionStatus_BusinessInteraction" type="string" abstract="true"/>
+     
+    <element name="interactionStatus_BusinessInteraction" type="cbebi-v1-5:BusinessInteractionState" substitutionGroup="cbebi-v1-5:baseInteractionStatus_BusinessInteraction"/> 
+
+    <element name="interactionStatus_BusinessInteractionState" type="cbedatatypes-v1-5:State" substitutionGroup="cbebi-v1-5:baseInteractionStatus_BusinessInteraction"/>
+
+    <!-- Tigerstripe : End of Entity definition for BusinessInteraction -->
+    <!-- Tigerstripe : Entity definitions for BusinessInteractionRelationship  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="BusinessInteractionRelationshipValue">
+        <annotation>
+            <documentation>
+
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbecore-v1-5:AssociationValue">    
+                <sequence>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionRelationshipValue">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionRelationshipValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="BusinessInteractionRelationshipKey">
+        <annotation>
+            <documentation>
+                This BusinessInteractionRelationshipKey encapsulates all the information that is necessary to 
+                identify a particular instance of a BusinessInteractionRelationshipValue. The type of the 
+                primary key for this BusinessInteractionRelationshipKey definition is: string 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:AssociationKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionRelationshipKey">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionRelationshipKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="BusinessInteractionRelationshipKeyResult">
+        <annotation>
+            <documentation>
+                The BusinessInteractionRelationshipKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a BusinessInteractionRelationshipValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:AssociationKeyResult">
+                <sequence>
+                     <element name="businessInteractionRelationshipKey" type="cbebi-v1-5:BusinessInteractionRelationshipKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionRelationshipKeyResult">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionRelationshipKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of BusinessInteractionRelationship -->
+    <!-- Tigerstripe : End of Entity definition for BusinessInteractionRelationship -->
+    <!-- Tigerstripe : Entity definitions for BusinessInteractionItem  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="BusinessInteractionItemValue">
+        <annotation>
+            <documentation>
+Interface definition for the javax.oss.cbe.bi.BusinessInteractionItemValue.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityValue">    
+                <sequence>
+                    <element name="action" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="quantity" type="cbedatatypes-v1-5:Quantity" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="places" type="cbelocation-v1-5:ArrayOfPlaceValue" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="involvedRoles" type="cbebi-v1-5:ArrayOfBusinessInteractionRoleValue" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="references" type="cbebi-v1-5:ArrayOfBusinessInteractionItemValue" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionItemValue">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionItemValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="BusinessInteractionItemKey">
+        <annotation>
+            <documentation>
+                This BusinessInteractionItemKey encapsulates all the information that is necessary to 
+                identify a particular instance of a BusinessInteractionItemValue. The type of the 
+                primary key for this BusinessInteractionItemKey definition is: anyType 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionItemKey">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionItemKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="BusinessInteractionItemKeyResult">
+        <annotation>
+            <documentation>
+                The BusinessInteractionItemKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a BusinessInteractionItemValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityKeyResult">
+                <sequence>
+                     <element name="businessInteractionItemKey" type="cbebi-v1-5:BusinessInteractionItemKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionItemKeyResult">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionItemKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of BusinessInteractionItem -->
+    <!-- Tigerstripe : End of Entity definition for BusinessInteractionItem -->
+    <!-- Tigerstripe : Entity definitions for BusinessInteractionSpecification  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="BusinessInteractionSpecificationValue">
+        <annotation>
+            <documentation>
+This specification captures characteristics and constraints applicable to instances of Business Interaction.  The invariant characteristics (attributes in the business view, and methods, constraints, relationships, and behavior in the system view) and behavior of a BusinessInteraction. This is done by optionally defining a set of BusinessInteractionSpecItems, each of which aggregates one or more other types of Specifications. This helps to ensure that different BusinessInteractions have the same basic characteristics and behavior by deriving them from the same BusinessInteractionSpec.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbecore-v1-5:EntitySpecificationValue">    
+                <sequence>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionSpecificationValue">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionSpecificationValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="BusinessInteractionSpecificationKey">
+        <annotation>
+            <documentation>
+                This BusinessInteractionSpecificationKey encapsulates all the information that is necessary to 
+                identify a particular instance of a BusinessInteractionSpecificationValue. The type of the 
+                primary key for this BusinessInteractionSpecificationKey definition is: string 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:EntitySpecificationKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionSpecificationKey">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionSpecificationKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="BusinessInteractionSpecificationKeyResult">
+        <annotation>
+            <documentation>
+                The BusinessInteractionSpecificationKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a BusinessInteractionSpecificationValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:EntitySpecificationKeyResult">
+                <sequence>
+                     <element name="businessInteractionSpecificationKey" type="cbebi-v1-5:BusinessInteractionSpecificationKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionSpecificationKeyResult">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionSpecificationKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of BusinessInteractionSpecification -->
+    <!-- Tigerstripe : End of Entity definition for BusinessInteractionSpecification -->
+    <!-- Tigerstripe : Entity definitions for BusinessInteractionRole  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="BusinessInteractionRoleValue">
+        <annotation>
+            <documentation>
+Interface definition for the javax.oss.cbe.bi.BusinessInteractionRoleValue.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityValue">    
+                <sequence>
+                    <element name="interactionRole" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionRoleValue">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionRoleValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="BusinessInteractionRoleKey">
+        <annotation>
+            <documentation>
+                This BusinessInteractionRoleKey encapsulates all the information that is necessary to 
+                identify a particular instance of a BusinessInteractionRoleValue. The type of the 
+                primary key for this BusinessInteractionRoleKey definition is: anyType 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionRoleKey">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionRoleKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="BusinessInteractionRoleKeyResult">
+        <annotation>
+            <documentation>
+                The BusinessInteractionRoleKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a BusinessInteractionRoleValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityKeyResult">
+                <sequence>
+                     <element name="businessInteractionRoleKey" type="cbebi-v1-5:BusinessInteractionRoleKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionRoleKeyResult">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionRoleKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of BusinessInteractionRole -->
+    <!-- Tigerstripe : End of Entity definition for BusinessInteractionRole -->
+    <!-- Tigerstripe : Datatype definitions for BusinessInteractionLocation  (basic, ArrayOf) -->
+    <complexType name="BusinessInteractionLocation">
+        <annotation>
+            <documentation>
+A Location involved in an interaction. For example, Mr Smith's home address is the location where an ordered Product will be installed.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="place" type="cbelocation-v1-5:PlaceValue" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="businessInteractionItemKeys" type="cbebi-v1-5:ArrayOfBusinessInteractionItemKey" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfBusinessInteractionLocation">
+        <sequence>
+            <element name="item" type="cbebi-v1-5:BusinessInteractionLocation" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of BusinessInteractionLocation -->
+    <!-- Tigerstripe : End of Datatype definition for BusinessInteractionLocation -->
+    <!-- Tigerstripe : Enumeration definitions for BusinessInteractionState  -->
+    <simpleType name="BusinessInteractionState">
+        <annotation>
+            <documentation>
+Interface definition BusinessInteractionState.java This is an enumerated integer whose value indicates the current status of this BusinessInteraction. The following values are defined:  
+- Unknown 
+- OK 
+- Initializing 
+- Starting 
+- Paused 
+- Stopping 
+- Stopped 
+- Degraded 
+- Stressed 
+- Predicted Failure 
+- Error - General 
+- Error - Non Recoverable 
+- Not Installed or Not Present 
+- In Maintenance 
+- Unable To Contact 
+- Lost Communications 
+- Normal Communications 
+ Stopped indicates that the BusinessInteraction has stopped. However, it has not failed. 
+ Stressed indicates that the BusinessInteraction is functioning, but needs attention (e.g., the interaction is taking much longer than anticipated, possibly due to the consumer or the producer being too busy to interact properly and/or efficiently). This is similar to Predicted Failure, which indicates that this BusinessInteraction is functioning properly, but is predicting a failure in the near future. 
+ In Maintenance indicates that this BusinessInteraction is being configured, maintained, or otherwise administered and is NOT available for use. 
+ Unable To Contact indicates that the monitoring system has knowledge of this BusinessInteraction but has never been able to establish communications with it. In contrast, Lost Commmunications indicates that the BusinessInteraction has been contacted successfully in the past and is known to still exist; however, it is currently unreachable. 
+ Finally, Normal Communications means that this BusinessInteraction is still in process.
+            </documentation>
+        </annotation>
+        <restriction base="string">
+            <enumeration value="unknown"/>
+            <enumeration value="ok"/>
+            <enumeration value="initializing"/>
+            <enumeration value="starting"/>
+            <enumeration value="paused"/>
+            <enumeration value="stopping"/>
+            <enumeration value="stopped"/>
+            <enumeration value="degraded"/>
+            <enumeration value="stressed"/>
+            <enumeration value="predictedfailure"/>
+            <enumeration value="error"/>
+            <enumeration value="general"/>
+            <enumeration value="error.general"/>
+            <enumeration value="nonrecoverable"/>
+            <enumeration value="error.nonrecoverable"/>
+            <enumeration value="notinstalledornotpresent"/>
+            <enumeration value="inmaintenance"/>
+            <enumeration value="unabletocontact"/>
+            <enumeration value="lostcommunications"/>
+            <enumeration value="normalcommunications"/>
+        </restriction>
+    </simpleType>
+    <!-- Tigerstripe : End of Enumeration definitions for BusinessInteractionState  -->
+
+
+
+
+
+
+</schema>

@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ *
+ *
+ *  Generated with Tigerstripe(tm) Tigerstripe Workbench Feature 2.2.0.v20070514-1108-IXOqsosF8y087t5
+ *
+ *  Tigerstripe(tm) is a registered trademark of Tigerstripe, Inc.
+ *
+ *  Plugin  : Tigerstripe, Inc., OSS through Java(TM) Initiative/XMLSpecificationPlugin(0.6) 
+ *
+ *  Template templates\packageBased\packageBasedSchema.vm
+ *    
+ *  DO NOT EDIT THIS CODE WAS AUTOMATICALLY GENERATED
+ *
+Copyright 2002-2007 The Members of the OSS through Java(TM) Initiative.
+All rights reserved. Use is subject to license terms.
+ *
+-->
+<!--
+DOCUMENTATION IS PROVIDED "AS IS" AND ALL EXPRESS OR IMPLIED
+CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED
+WARRANTY OF MERCHANTABILITY, FITNESS FOR FOR A PARTICULAR PURPOSE OR
+NON-INFRINGEMENT, ARE DISCLAIMED, EXCEPT TO THE EXTENT THAT SUCH
+DISCLAIMERS ARE HELD TO BE LEGALLY INVALID.
+-->
+<schema targetNamespace="http://ossj.org/xml/Common-CBELocation/v1-5" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:co-v1-5="http://ossj.org/xml/Common/v1-5" xmlns:cbelocation-v1-5="http://ossj.org/xml/Common-CBELocation/v1-5" xmlns:cbecore-v1-5="http://ossj.org/xml/Common-CBECore/v1-5" xmlns:cbedatatypes-v1-5="http://ossj.org/xml/Common-CBEDatatypes/v1-5" version="v1-5" elementFormDefault="qualified">
+
+    <!-- Imports -->
+
+    <import namespace="http://ossj.org/xml/Common/v1-5" schemaLocation="OSSJ-Common-v1-5.xsd"/>
+    <import namespace="http://ossj.org/xml/Common-CBECore/v1-5" schemaLocation="OSSJ-Common-CBECore-v1-5.xsd"/>
+    <import namespace="http://ossj.org/xml/Common-CBEDatatypes/v1-5" schemaLocation="OSSJ-Common-CBEDatatypes-v1-5.xsd"/>
+    <!-- Tigerstripe : Entity definitions for GeographicAddress  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="GeographicAddressValue">
+        <annotation>
+            <documentation>
+A structured textual way of describing how to find a Geographic Location. It is usually composed of an ordered list of Geographic Location names based on context specific rulesIt is an abstract modeling concept that provides a linking point to other parts of the SID model.It holds attributes common to all Geographic Address subclasses.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbelocation-v1-5:GeographicPlaceValue">    
+                <sequence>
+                    <element name="country" type="cbelocation-v1-5:Country" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="stateOrProvince" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfGeographicAddressValue">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:GeographicAddressValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="GeographicAddressKey">
+        <annotation>
+            <documentation>
+                This GeographicAddressKey encapsulates all the information that is necessary to 
+                identify a particular instance of a GeographicAddressValue. The type of the 
+                primary key for this GeographicAddressKey definition is: string 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbelocation-v1-5:GeographicPlaceKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfGeographicAddressKey">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:GeographicAddressKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="GeographicAddressKeyResult">
+        <annotation>
+            <documentation>
+                The GeographicAddressKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a GeographicAddressValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbelocation-v1-5:GeographicPlaceKeyResult">
+                <sequence>
+                     <element name="geographicAddressKey" type="cbelocation-v1-5:GeographicAddressKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfGeographicAddressKeyResult">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:GeographicAddressKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of GeographicAddress -->
+    <!-- Tigerstripe : End of Entity definition for GeographicAddress -->
+    <!-- Tigerstripe : Entity definitions for LocalPlace  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="LocalPlaceValue">
+        <annotation>
+            <documentation>
+Interface definition for the javax.oss.cbe.location.LocalPlaceValue. Allows us to determine where things are in relation to a local coordinate system. It is an abstract modeling concept that provides a linking point to other parts of the SID model.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbelocation-v1-5:PlaceValue">    
+                <sequence>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfLocalPlaceValue">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:LocalPlaceValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="LocalPlaceKey">
+        <annotation>
+            <documentation>
+                This LocalPlaceKey encapsulates all the information that is necessary to 
+                identify a particular instance of a LocalPlaceValue. The type of the 
+                primary key for this LocalPlaceKey definition is: anyType 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbelocation-v1-5:PlaceKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfLocalPlaceKey">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:LocalPlaceKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="LocalPlaceKeyResult">
+        <annotation>
+            <documentation>
+                The LocalPlaceKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a LocalPlaceValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbelocation-v1-5:PlaceKeyResult">
+                <sequence>
+                     <element name="localPlaceKey" type="cbelocation-v1-5:LocalPlaceKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfLocalPlaceKeyResult">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:LocalPlaceKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of LocalPlace -->
+    <!-- Tigerstripe : End of Entity definition for LocalPlace -->
+    <!-- Tigerstripe : Entity definitions for GeographicPlace  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="GeographicPlaceValue">
+        <annotation>
+            <documentation>
+Interface definition for the javax.oss.cbe.location.GeographicPlaceValue. Allows us to determine where things are in relation to the earth's surface.It is an abstract modeling concept that provides a linking point to other parts of the CBE model.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbelocation-v1-5:PlaceValue">    
+                <sequence>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfGeographicPlaceValue">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:GeographicPlaceValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="GeographicPlaceKey">
+        <annotation>
+            <documentation>
+                This GeographicPlaceKey encapsulates all the information that is necessary to 
+                identify a particular instance of a GeographicPlaceValue. The type of the 
+                primary key for this GeographicPlaceKey definition is: anyType 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbelocation-v1-5:PlaceKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfGeographicPlaceKey">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:GeographicPlaceKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="GeographicPlaceKeyResult">
+        <annotation>
+            <documentation>
+                The GeographicPlaceKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a GeographicPlaceValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbelocation-v1-5:PlaceKeyResult">
+                <sequence>
+                     <element name="geographicPlaceKey" type="cbelocation-v1-5:GeographicPlaceKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfGeographicPlaceKeyResult">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:GeographicPlaceKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of GeographicPlace -->
+    <!-- Tigerstripe : End of Entity definition for GeographicPlace -->
+    <!-- Tigerstripe : Entity definitions for Place  (Value, ArrayOfValue, Key, ArrayOfKey, KeyResult, ArrayOfKeyResult) -->
+    <complexType name="PlaceValue">
+        <annotation>
+            <documentation>
+A Value Type interface representing a place Entity. This is an abstract class that that extends RootEntity to identify a position, address, geographic area, or particular structure. It is also named "Place" in the SID model from the Telemanagement Forum.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityValue">    
+                <sequence>
+                    <element name="validFor" type="cbedatatypes-v1-5:TimePeriod" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfPlaceValue">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:PlaceValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="PlaceKey">
+        <annotation>
+            <documentation>
+                This PlaceKey encapsulates all the information that is necessary to 
+                identify a particular instance of a PlaceValue. The type of the 
+                primary key for this PlaceKey definition is: anyType 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfPlaceKey">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:PlaceKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="PlaceKeyResult">
+        <annotation>
+            <documentation>
+                The PlaceKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a PlaceValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbecore-v1-5:EntityKeyResult">
+                <sequence>
+                     <element name="placeKey" type="cbelocation-v1-5:PlaceKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfPlaceKeyResult">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:PlaceKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    
+    <!-- Modified for ClarifyTT-->
+    <complexType name="UrbanPropertyAddressValue">
+        <annotation>
+            <documentation>
+A UrbanPropertyAddress type. An UrbanPropertyAddress is a structured textual way of describing how to find a Property in an urban area. It is usually composed of an ordered list of Location names based on context specific rules.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbelocation-v1-5:GeographicAddressValue">    
+                <sequence>
+                    <element name="streetNrFirst" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="streetNrFirstSuffix" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="streetNrLast" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="streetNrLastSuffix" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="streetName" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="streetType" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="streetSuffix" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="locality" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="postCode" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- Added for ClarifyTT-->
+    <complexType name="UrbanPropertySubAddressValue">
+        <annotation>
+            <documentation>
+A UrbanPropertySubAddress type. An UrbanPropertySubAddress is a structured textual way of describing how to find a Property in an urban area. It is usually composed of an ordered list of Location names based on context specific rules.
+            </documentation>
+        </annotation>
+
+        <complexContent>
+            <extension base="cbelocation-v1-5:GeographicAddressValue">    
+                <sequence>
+                    <element name="buildingName" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="id" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="levelNr" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="levelType" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="privateStreetName" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="subUnitNr" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="subUnitType" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>    
+    <complexType name="ArrayOfUrbanPropertyAddressValue">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:UrbanPropertyAddressValue" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="UrbanPropertyAddressKey">
+        <annotation>
+            <documentation>
+                This UrbanPropertyAddressKey encapsulates all the information that is necessary to 
+                identify a particular instance of a UrbanPropertyAddressValue. The type of the 
+                primary key for this UrbanPropertyAddressKey definition is: string 
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbelocation-v1-5:GeographicAddressKey">        
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfUrbanPropertyAddressKey">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:UrbanPropertyAddressKey" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="UrbanPropertyAddressKeyResult">
+        <annotation>
+            <documentation>
+                The UrbanPropertyAddressKeyResult encapsulates all the information necessary to indicate the 
+                result of a BEST EFFORT operation on a UrbanPropertyAddressValue. The managed entity key result 
+                is used in operations involving the update of multiple managed entities, in the deletion
+                of multiple managed entities or in the creation of multiple managed entities or in 
+                bulk business operations.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="cbelocation-v1-5:GeographicAddressKeyResult">
+                <sequence>
+                     <element name="urbanPropertyAddressKey" type="cbelocation-v1-5:UrbanPropertyAddressKey" nillable="true" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ArrayOfUrbanPropertyAddressKeyResult">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:UrbanPropertyAddressKeyResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>        
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of UrbanPropertyAddress -->
+    <!-- Tigerstripe : End of Entity definition for UrbanPropertyAddress -->
+    <!-- Tigerstripe : Datatype definitions for FormattedAddress  (basic, ArrayOf) -->
+    <complexType name="FormattedAddress">
+        <annotation>
+            <documentation>
+Interface definition for the javax.oss.cbe.location.FormattedAddress.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="addrLn1" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="addrLn2" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="addrLn3" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="addrLn4" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfFormattedAddress">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:FormattedAddress" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of FormattedAddress -->
+    <!-- Tigerstripe : End of Datatype definition for FormattedAddress -->
+    <!-- Tigerstripe : Datatype definitions for MSAGAddress  (basic, ArrayOf) -->
+    <complexType name="MSAGAddress">
+        <annotation>
+            <documentation>
+This interface defines the MSAGAddress type.  The Master Street Address Guide contains all street information in the full featured E911 service area. The Emergency Service Numbers (ESNs) are assigned to the streets for routing 911 calls to the proper PSAP. As data records for the pseudo-ANI telephone numbers are processed from the wireless carriers, the address information on the data record is validated against the MSAG. Address information on the data records must exactly match the MSAG information or the data records will be considered an error and returned to the wireless carrier for correction. Data records are not posted to the database until they pass validation.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="houseNrPref" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="houseNr" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="houseNrSuf" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="preDirectional" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="streetNm" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="streetNmSuf" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="postDirectional" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="city" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfMSAGAddress">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:MSAGAddress" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Tigerstripe : Global element definitions for extensible Enum attributes of MSAGAddress -->
+    <!-- Tigerstripe : End of Datatype definition for MSAGAddress -->
+    <!-- Tigerstripe : Datatype definitions for AbsoluteLocalOrientation  (basic, ArrayOf) -->
+    <complexType name="AbsoluteLocalOrientation">
+        <annotation>
+            <documentation>
+Interface definition for the javax.oss.cbe.location.AbsoluteLocalOrientation.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="piCoord" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="psiCoord" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="thetaCoord" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+    <complexType name="ArrayOfAbsoluteLocalOrientation">
+        <sequence>
+            <element name="item" type="cbelocation-v1-5:AbsoluteLocalOrientation" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <!-- Added for ClarifyTT-->
+    <complexType name="Country">
+        <annotation>
+            <documentation>
+				Interface definition for the Country.
+            </documentation>
+        </annotation>
+                <sequence>
+                    <element name="name" type="string" nillable="true" minOccurs="1" maxOccurs="1"/>
+                    <element name="Iso2Code" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="Iso3Code" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="type" type="string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+    </complexType>
+
+
+
+
+
+
+</schema>
