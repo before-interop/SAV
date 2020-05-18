@@ -361,6 +361,12 @@
 				<xsd:maxLength value="30"/>
 			</xsd:restriction>
 		</xsd:simpleType>
+		<xsd:simpleType name="activatedCustomertechnicalId">
+			<xsd:restriction base="xsd:string">
+				<xsd:minLength value="0" />
+				<xsd:maxLength value="50" />
+			</xsd:restriction>
+		</xsd:simpleType>
 		<xsd:complexType name="FTTHMUTTroubleTicket">
 			<xsd:sequence>
 				<xsd:element name="serviceProviderID" type="tns:serviceProviderID" nillable="true" minOccurs="0" maxOccurs="1"/>
@@ -418,7 +424,7 @@
 				<xsd:element name="offerLinkValue" type="tns:offerLinkValue" nillable="true" minOccurs="0" maxOccurs="1"/>
 				<xsd:element name="offerOptionalId" type="tns:offerOptionalId" nillable="true" minOccurs="0" maxOccurs="1"/>
 				<xsd:element name="OLTranking" type="tns:OLTranking" nillable="true" minOccurs="0" maxOccurs="1"/>
-				<xsd:element name="activatedCustomertechnicalId" type="xsd:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="activatedCustomertechnicalId" type="tns:activatedCustomertechnicalId" nillable="true" minOccurs="0" maxOccurs="1"/>
 			</xsd:sequence>
 		</xsd:complexType>
 </xsd:schema>
