@@ -178,6 +178,7 @@
 				<xsd:enumeration value="REPONSE RDV"/>
 				<xsd:enumeration value="PROPOSITION DE RDV"/>
 				<xsd:enumeration value="ESCALADE"/>
+				<xsd:enumeration value="COMMENTAIRE DDE ANNUL"/>
 			</xsd:restriction>
 		</xsd:simpleType>
 		<xsd:simpleType name="messageContent">
