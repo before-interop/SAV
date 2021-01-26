@@ -300,7 +300,7 @@
 		<xsd:simpleType name="GRTDelay">
 			<xsd:restriction base="xsd:string">
 				<xsd:minLength value="0"/>
-				<xsd:maxLength value="2"/>
+				<xsd:maxLength value="10"/>
 			</xsd:restriction>
 		</xsd:simpleType>
 		<xsd:simpleType name="GRTSignalingRangeDay">
