@@ -19,7 +19,7 @@
 		</xsd:simpleType>
 		<xsd:simpleType name="serviceProviderName">
 			<xsd:restriction base="xsd:string">
-				<xsd:minLength value=""/>
+				<xsd:minLength value="0"/>
 				<xsd:maxLength value="40"/>
 			</xsd:restriction>
 		</xsd:simpleType>
@@ -43,7 +43,7 @@
 		</xsd:simpleType>
 		<xsd:simpleType name="supplierName">
 			<xsd:restriction base="xsd:string">
-				<xsd:minLength value=""/>
+				<xsd:minLength value="0"/>
 				<xsd:maxLength value="40"/>
 			</xsd:restriction>
 		</xsd:simpleType>
@@ -141,7 +141,7 @@
 		<xsd:simpleType name="SUAppointmentManagementId">
 			<xsd:restriction base="xsd:string">
 				<xsd:minLength value="0"/>
-				<xsd:maxLength value="10"/>
+				<xsd:maxLength value="30"/>
 			</xsd:restriction>
 		</xsd:simpleType>
 		<xsd:simpleType name="defectClassId">
@@ -152,8 +152,9 @@
 		</xsd:simpleType>
 		<xsd:simpleType name="defectDescription">
 			<xsd:restriction base="xsd:string">
-				<xsd:minLength value="0"/>
-				<xsd:maxLength value="30"/>
+				<xsd:enumeration value="PAS DE SIGNAL"/>
+				<xsd:enumeration value="SIGNAL AFFAIBLI"/>
+				<xsd:enumeration value="PROBLEME ALIGNEMENT"/>
 			</xsd:restriction>
 		</xsd:simpleType>
 		<xsd:simpleType name="defectPrelocalization">
@@ -317,7 +318,7 @@
 		<xsd:simpleType name="GRTSignalingRangeHour">
 			<xsd:restriction base="xsd:string">
 				<xsd:minLength value="0"/>
-				<xsd:maxLength value="10"/>
+				<xsd:maxLength value="20"/>
 			</xsd:restriction>
 		</xsd:simpleType>
 		<xsd:simpleType name="linkLengthPMPRDM">
